@@ -98,5 +98,5 @@ Alternatively, you can try bundling the required libraries with the AppImage its
 
 
 
-# if you face issue with the xcb not load error during deployment
+# If you face issue with the xcb not load error during deployment
 Sudo apt install libxcb-xinerama0
