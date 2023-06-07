@@ -1,15 +1,11 @@
 # ev2_60kw
 This is for the GUI development of the project EV Chargers
 
-
-
 # How to create AppImage Creation for the project above
 
 .
 MyApp
 AppBin
-
-
 
 Tools
 Appimage
