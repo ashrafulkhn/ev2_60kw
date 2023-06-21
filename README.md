@@ -2,14 +2,14 @@
 This is for the GUI development of the project EV Chargers
 
 # How to create AppImage Creation for the project above
-
-.
+<p>
 MyApp
 AppBin
-
+</p>
+<p>
 Tools
 Appimage
-
+</p>
 
 Build
 Empty
