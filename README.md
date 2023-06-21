@@ -93,7 +93,5 @@ Alternatively, you can try bundling the required libraries with the AppImage its
        ./appimagetool-x86_64.AppImage squashfs-root/ --appimage-desktop --appimage-sign
        This will create a new AppImage with the required libraries bundled inside. You can then distribute this new AppImage to users, and it should run without any missing library errors.
 
-
-
 # If you face issue with the xcb not load error during deployment
 Sudo apt install libxcb-xinerama0
