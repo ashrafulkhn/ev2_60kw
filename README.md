@@ -14,7 +14,7 @@ Appimage
 Build
 Empty
 
-
+<p>
 LD_LIBRARY_PATH how to add lib dir to path 
 To add a directory containing shared libraries to the LD_LIBRARY_PATH environment variable, you can use the following command:
 bashCopy code
@@ -22,6 +22,7 @@ export LD_LIBRARY_PATH=/path/to/lib/dir:$LD_LIBRARY_PATH
 Replace /path/to/lib/dir with the actual path to the directory containing the shared libraries you want to use.
 This command prepends the specified directory to the existing value of LD_LIBRARY_PATH, if any. This way, any shared libraries in the directory will be searched for before the default system directories.
 Note that this change to LD_LIBRARY_PATH only affects the current shell session. If you want to make the change persistent across reboots, you need to add the above command to your shell startup script, such as ~/.bashrc or ~/.profile.
+</p>
 
 how to create appimage with the following application. Please note that the so files are mentioned in the comment above
 To create an AppImage with the mentioned application and its required shared object (.so) files, you can follow these general steps:
