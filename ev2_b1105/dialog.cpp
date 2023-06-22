@@ -15,28 +15,19 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
 {
     ui->setupUi(this);
 
+
+    //:::::::::::::::::::    Set Home Page and Image  :::::::::::::::::::::::::::
     //Set index to the home page on starting
     ui->stackedWidget_1->setCurrentIndex(0);
     ui->stackedWidget_2->setCurrentIndex(0);
 
-    //Set car image
-    QPixmap ev_car(":/data/image/ev_car.png");
-    QPixmap ev_car_tranformed = ev_car.scaledToWidth(400, Qt::SmoothTransformation);
-    //    QPixmap ev_car_mirrored = ev_car_tranformed.mirrored(true,false);
-    QImage ev_car_image = ev_car_tranformed.toImage();
-    QImage mirrored_ev_car_image = ev_car_image.mirrored(true, false);
-    QPixmap mirrored_ev_car = QPixmap::fromImage(mirrored_ev_car_image);
-    //    ui->label_4->setPixmap(mirrored_ev_car);
-    ui->label_4->setPixmap(ev_car_tranformed);
-    ui->label_7->setPixmap(mirrored_ev_car);
+    //Set car image on the gome page
+    viewCarImage();
 
     //:::::::::::::::::::    MQTT Section   :::::::::::::::::::::::::::::::::::
     m_client = new QMqttClient(this);
-//    m_client->setHostname("192.168.43.154");
-//        m_client->setHostname("192.168.31.209");
-//        m_client->setHostname("10.5.8.119");
-        m_client->setHostname("192.168.1.20");
-//    m_client->setHostname(getLocalIpAddress());
+    m_client->setHostname("192.168.1.20");
+    m_client->setHostname(getLocalIpAddress());
     m_client->setPort(1883);
 
     connect_to_broker();
@@ -78,6 +69,17 @@ Dialog::~Dialog()
     delete ui;
 }
 
+void Dialog::viewCarImage(){
+    QPixmap ev_car(":/data/image/ev_car.png");
+    QPixmap ev_car_tranformed = ev_car.scaledToWidth(400, Qt::SmoothTransformation);
+    //    QPixmap ev_car_mirrored = ev_car_tranformed.mirrored(true,false);
+    QImage ev_car_image = ev_car_tranformed.toImage();
+    QImage mirrored_ev_car_image = ev_car_image.mirrored(true, false);
+    QPixmap mirrored_ev_car = QPixmap::fromImage(mirrored_ev_car_image);
+    //    ui->label_4->setPixmap(mirrored_ev_car);
+    ui->label_4->setPixmap(ev_car_tranformed);
+    ui->label_7->setPixmap(mirrored_ev_car);
+}
 
 void Dialog::setClientPort(int p)
 {
@@ -380,6 +382,7 @@ void Dialog::updateLogStateChange(){
     if(m_client->state()==0){
         ui->stackedWidget_1->setCurrentIndex(0);
         ui->stackedWidget_2->setCurrentIndex(0);
+        connect_to_broker();
     }
 }
 

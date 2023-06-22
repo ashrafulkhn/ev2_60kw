@@ -21,6 +21,8 @@ public:
     Dialog(QWidget *parent = nullptr);
     ~Dialog();
 
+    void viewCarImage();
+
     QString getConnectString();
     void setConnectString(QString payload);
 
