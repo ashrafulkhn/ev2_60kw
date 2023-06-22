@@ -351,7 +351,6 @@ QString Dialog::getLocalIpAddress()
         return QString();
 }
 
-
 void Dialog::connect_to_broker(){
     if (m_client->state() == QMqttClient::Disconnected) {
 //        ui->buttonConnect->setText(tr("Disconnect"));
