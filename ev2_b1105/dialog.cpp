@@ -33,7 +33,9 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
     //:::::::::::::::::::    MQTT Section   :::::::::::::::::::::::::::::::::::
     m_client = new QMqttClient(this);
 //    m_client->setHostname("192.168.43.154");
-        m_client->setHostname("192.168.3.11");
+        m_client->setHostname("192.168.31.209");
+//        m_client->setHostname("10.5.8.119");
+        m_client->setHostname("192.168.1.3");
 //    m_client->setHostname(getLocalIpAddress());
     m_client->setPort(1883);
 
