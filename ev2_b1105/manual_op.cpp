@@ -25,14 +25,9 @@ manual_op::manual_op(QMqttClient *m_client, QWidget *parent) :
 manual_op::~manual_op()
 {
     delete ui;
+    delete m_client_w2;
 }
 
-void manual_op::on_pushButton_clicked()
-{
-    m_client_w2->publish(man_command_topic_1, (stop_message_1 + ":" + ":").toUtf8());
-    m_client_w2->publish(man_command_topic_2, (stop_message_2 + ":" + ":").toUtf8());
-    close();
-}
 
 void manual_op::topic_subscription(){
     if (m_client_w2->state() == QMqttClient::Connected){
@@ -44,16 +39,10 @@ void manual_op::topic_subscription(){
 
 
             if (!subscription) {
-//                ui->serv_status->setText("Error. Could not connect to Broker.");
-
-//                QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not subscribe. Is there a valid connection?"));
                 qDebug() << "Window 2 sub (false) State: " << m_client_w2->state();
                 return;
             }
             else {
-//                    ui->serv_status->setText("Subscribed to Broker Successfully.");
-                    //QMessageBox::critical(this, QLatin1String("Success!!"), QLatin1String("Subscribed Successfully."));
-//                    Dialog::setWindowTitle("Charger Connected to :: " + ui->lineEdit_2->text());
                     qDebug() << "Window 2 sub (true) State: " << m_client_w2->state();
                 }
             qDebug() << "Window 2 sub (if connected) State: " << m_client_w2->state();
@@ -78,53 +67,61 @@ void manual_op::process_message(const QByteArray &message, const QMqttTopicName 
 
 }
 
-void manual_op::on_pushButton_4_clicked()
+
+void manual_op::on_start_man_1_clicked()
 {
     QString voltage = ui->lineEdit_2->text();
     QString current = ui->lineEdit->text();
 
 
     if (m_client_w2->publish(man_command_topic_1, (start_messsgae_1 + ":" + voltage + ":" + current).toUtf8()) == -1){
-        qDebug() << "Message not published.";
+        qDebug() << man_command_topic_1 << ":" + start_messsgae_1 + " : INFO: Failed";
     }
     else{
-        qDebug() << "Start Message published.";
+        qDebug() << man_command_topic_1 + ":" + start_messsgae_1 + ":" + voltage + ":" + current << " : INFO: Success";
     }
 }
 
-void manual_op::on_pushButton_5_clicked()
+
+void manual_op::on_stop_man_1_clicked()
 {
     if (m_client_w2->publish(man_command_topic_1, (stop_message_1 + ":" + ":").toUtf8()) == -1){
-        qDebug() << "Message not published." << man_command_topic_1;
+        qDebug() << man_command_topic_1 << ":" + stop_message_1 + " : INFO: Failed" ;
     }
     else{
-        qDebug() << "Start Message published." << man_command_topic_1;
+        qDebug() << man_command_topic_1 << stop_message_1 + " : INFO: Success";
     }
 }
 
 
-void manual_op::on_pushButton_6_clicked()
+void manual_op::on_start_man_2_clicked()
 {
     QString voltage = ui->lineEdit_4->text();
     QString current = ui->lineEdit_3->text();
 
 
     if (m_client_w2->publish(man_command_topic_2, (start_messsgae_2 + ":" + voltage + ":" + current).toUtf8()) == -1){
-        qDebug() << "Message not published." << man_command_topic_2;
+        qDebug() << man_command_topic_1 << ":" + start_messsgae_1 + " : INFO: Failed";
     }
     else{
-        qDebug() << "Start Message published." << man_command_topic_2;
+        qDebug() << "Start Message published." + man_command_topic_2 + ":" + start_messsgae_2 + ":" + voltage + ":" + current;
     }
 }
 
-
-void manual_op::on_pushButton_7_clicked()
+void manual_op::on_stop_man_2_clicked()
 {
     if (m_client_w2->publish(man_command_topic_2, (stop_message_2+":"+":").toUtf8()) == -1){
-        qDebug() << "Message not published." << man_command_topic_2;
+        qDebug() << man_command_topic_2 << ":" + stop_message_2 + " : INFO: Failed" ;
     }
     else{
-        qDebug() << "Start Message published." << man_command_topic_2;
+        qDebug() << man_command_topic_2 << stop_message_2 + " : INFO: Success";
     }
+}
+
+void manual_op::on_buttonExitManMode_clicked()
+{
+    m_client_w2->publish(man_command_topic_1, (stop_message_1 + ":" + ":").toUtf8());
+    m_client_w2->publish(man_command_topic_2, (stop_message_2 + ":" + ":").toUtf8());
+    close();
 }
 

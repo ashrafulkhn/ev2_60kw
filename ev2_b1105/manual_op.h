@@ -36,15 +36,13 @@ public slots:
     void process_message(const QByteArray &message, const QMqttTopicName &topic);
     void topic_subscription();
 private slots:
-    void on_pushButton_clicked();
+//    void on_pushButton_clicked(); //Exit Manual Mode button
+    void on_start_man_1_clicked();
+    void on_stop_man_1_clicked();
+    void on_start_man_2_clicked();
+    void on_stop_man_2_clicked();
 
-    void on_pushButton_4_clicked();
-
-    void on_pushButton_5_clicked();
-
-    void on_pushButton_6_clicked();
-
-    void on_pushButton_7_clicked();
+    void on_buttonExitManMode_clicked();
 
 private:
     Ui::manual_op *ui;

@@ -15,7 +15,6 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
 {
     ui->setupUi(this);
 
-
     //:::::::::::::::::::    Set Home Page and Image  :::::::::::::::::::::::::::
     //Set index to the home page on starting
     ui->stackedWidget_1->setCurrentIndex(0);
@@ -26,7 +25,7 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
 
     //:::::::::::::::::::    MQTT Section   :::::::::::::::::::::::::::::::::::
     m_client = new QMqttClient(this);
-    m_client->setHostname("192.168.1.20");
+//    m_client->setHostname("192.168.1.20");
     m_client->setHostname(getLocalIpAddress());
     m_client->setPort(1883);
 
@@ -57,96 +56,31 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
                     + QLatin1String(" PingResponse")
                     + QLatin1Char('\n');
         qDebug() << "Ping Response: " << content;
+
     });
-
-//    updateLogStateChange();
-//    topic_subscription();
-
 }
 
 Dialog::~Dialog()
 {
     delete ui;
-}
-
+    delete m_client;
+    qDebug() << "Ojects detelted from Memory.";
+ }
+//Manupulate the Car Image and display to the label only if the network is connected to Mqtt broker.
 void Dialog::viewCarImage(){
     QPixmap ev_car(":/data/image/ev_car.png");
     QPixmap ev_car_tranformed = ev_car.scaledToWidth(400, Qt::SmoothTransformation);
-    //    QPixmap ev_car_mirrored = ev_car_tranformed.mirrored(true,false);
     QImage ev_car_image = ev_car_tranformed.toImage();
     QImage mirrored_ev_car_image = ev_car_image.mirrored(true, false);
     QPixmap mirrored_ev_car = QPixmap::fromImage(mirrored_ev_car_image);
-    //    ui->label_4->setPixmap(mirrored_ev_car);
     ui->label_4->setPixmap(ev_car_tranformed);
     ui->label_7->setPixmap(mirrored_ev_car);
 }
 
-void Dialog::setClientPort(int p)
+void Dialog::setClientPort(int iPort)
 {
-    m_client->setPort(p);
+    m_client->setPort(iPort);
 }
-
-
-void Dialog::on_pushButton_2_clicked()
-{
-    ui->stackedWidget_1->setCurrentIndex(0);
-}
-
-
-void Dialog::on_pushButton_3_clicked()
-{
-    ui->stackedWidget_1->setCurrentIndex(1);
-}
-
-
-void Dialog::on_pushButton_clicked()
-{
-    ui->stackedWidget_1->setCurrentIndex(2);
-}
-
-
-void Dialog::on_pushButton_4_clicked()
-{
-    ui->stackedWidget_2->setCurrentIndex(0);
-}
-
-
-void Dialog::on_pushButton_5_clicked()
-{
-    ui->stackedWidget_2->setCurrentIndex(1);
-}
-
-
-void Dialog::on_pushButton_6_clicked()
-{
-    ui->stackedWidget_2->setCurrentIndex(2);
-}
-
-
-void Dialog::on_pushButton_7_clicked()
-{
-    ui->stackedWidget_1->setCurrentIndex(3);
-}
-
-
-void Dialog::on_pushButton_8_clicked()
-{
-    ui->stackedWidget_2->setCurrentIndex(3);
-}
-
-
-//void Dialog::on_buttonConnect_clicked()
-//{
-//    if (m_client->state() == QMqttClient::Disconnected) {
-//        ui->buttonConnect->setText(tr("Disconnect"));
-//        m_client->connectToHost();
-//        qDebug() << "on_buttonConnect_clicked" << m_client->state();
-//    }
-//    else {
-//            ui->buttonConnect->setText(tr("Connect"));
-//            m_client->disconnectFromHost();
-//        }
-//}
 
 void Dialog::topic_subscription(){
     if (m_client->state() == QMqttClient::Connected){
@@ -234,8 +168,6 @@ void Dialog::topic_subscription(){
         m_client->subscribe(i282);
         m_client->subscribe(i292);
         m_client->subscribe(i2102);
-
-
     }
     else {
         ui->stackedWidget_1->setCurrentIndex(0);
@@ -354,6 +286,7 @@ QString Dialog::getLocalIpAddress()
 void Dialog::connect_to_broker(){
     if (m_client->state() == QMqttClient::Disconnected) {
 //        ui->buttonConnect->setText(tr("Disconnect"));
+        qDebug() << "connect_to_broker." ;
         m_client->connectToHost();
         qDebug() << "connect_to_broker" << m_client->state();
         ui->stackedWidget_1->setCurrentIndex(1);
@@ -370,6 +303,7 @@ void Dialog::brokerDisconnected()
 //    ui->buttonConnect->setText(tr("Connect"));
     ui->stackedWidget_1->setCurrentIndex(0);
     ui->stackedWidget_2->setCurrentIndex(0);
+    this->connect_to_broker();
 }
 
 void Dialog::updateLogStateChange(){
@@ -381,7 +315,7 @@ void Dialog::updateLogStateChange(){
     if(m_client->state()==0){
         ui->stackedWidget_1->setCurrentIndex(0);
         ui->stackedWidget_2->setCurrentIndex(0);
-        connect_to_broker();
+        this->connect_to_broker();
     }
 }
 

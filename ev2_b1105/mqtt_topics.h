@@ -27,9 +27,6 @@
 #define I_1_211  "vsecc/connector/1/status/components/report_failure"
 #define I_1_221  "vsecc/connector/1/status/components/report_resolution"
 
-
-
-
 //Publishing topics GUN1
 #define I_2_11   "vsecc/connector/1/em/measurement_status"
 #define I_2_21   "vsecc/connector/1/em/signed_reading"
@@ -41,8 +38,6 @@
 #define I_2_81   "vsecc/io/t_in/{t_in_id}/resistance"
 #define I_2_91   "vsecc/connector/1/status/components/report_failure"
 #define I_2_101  "vsecc/connector/1/status/components/report_resolution"
-
-
 
 //Subscribing topics GUN2
 #define I_1_12   "vsecc/connector/2/em/measurement_control"
@@ -80,14 +75,6 @@
 #define I_2_92   "vsecc/connector/2/status/components/report_failure"
 #define I_2_102  "vsecc/connector/2/status/components/report_resolution"
 
-
-////Event Tpoics (FOR TESTING)
-//#define AUTH_STATUS             "topic1"
-//#define CONNECT_CHARGER         "topic2"
-//#define CHARGER_CONNECTED       "topic3"
-//#define CHARGE_STOPPED          "topic4"
-//#define CHARGER_DISCONNECTED    "topic5"
-
 //Actual Event Topics from Vector Device.
 #define AUTH_STATUS             I_1_51
 #define CONNECT_CHARGER         "topic2"
@@ -109,21 +96,16 @@
 #define FULL_SOC_2          I_1_131
 #define ENERGY_2            I_1_91
 
-//Messages or Paloads (From topic I_1_51)
+//Messages or Payloads (From topic I_1_51)
 #define STATE_A "state_a" // After diconnecting charger (Default State)
 #define STATE_B "state_b" //Charger connected
 
-//Messages or Paloads (From topic I_1_111)
+//Messages or Payloads (From topic I_1_111)
 #define DEAUTH  "deauthoriezed"
 #define AUTH    "authorized"
 #define PENDING "pending"
 
 //Messages or Paloads (From topic I_1_141)
 #define CHARGE_STOPPED_MESSAGE "SLACok"
-
-//Client Parameters
-//#define BROKER_IP "192.168.31.208"
-//#define BROKER_IP "localhost"
-//#define CLIENT_PORT 1883
 
 #endif // MQTT_TOPICS_H
