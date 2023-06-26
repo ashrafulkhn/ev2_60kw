@@ -25,8 +25,8 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
 
     //:::::::::::::::::::    MQTT Section   :::::::::::::::::::::::::::::::::::
     m_client = new QMqttClient(this);
-//    m_client->setHostname("192.168.1.20");
-    m_client->setHostname(getLocalIpAddress());
+    m_client->setHostname("192.168.3.3");
+//    m_client->setHostname(getLocalIpAddress());
     m_client->setPort(1883);
 
     connect_to_broker();
@@ -303,7 +303,7 @@ void Dialog::brokerDisconnected()
 //    ui->buttonConnect->setText(tr("Connect"));
     ui->stackedWidget_1->setCurrentIndex(0);
     ui->stackedWidget_2->setCurrentIndex(0);
-    this->connect_to_broker();
+//    this->connect_to_broker();
 }
 
 void Dialog::updateLogStateChange(){
@@ -315,7 +315,7 @@ void Dialog::updateLogStateChange(){
     if(m_client->state()==0){
         ui->stackedWidget_1->setCurrentIndex(0);
         ui->stackedWidget_2->setCurrentIndex(0);
-        this->connect_to_broker();
+//        this->connect_to_broker();
     }
 }
 
