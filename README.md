@@ -1,7 +1,7 @@
 # ev2_60kw
 This is for the GUI development of the project EV Chargers
 
-##Status of this branch
+## Status of this branch
 The code is compiled for phyBOARD-POLUX using PHYTEC SOM i.MX 8MP. There are some minor issues with this version such as MQTT server auto-reconnect features to be added.
 - If disconnected it never connects back to the server.
 - Virtual Keyboard to be added for data entry.
