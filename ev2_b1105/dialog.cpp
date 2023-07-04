@@ -10,6 +10,7 @@
 #include <QLineEdit>
 #include <QHostInfo>
 #include <QNetworkInterface>
+#include <QSettings>
 
 Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
 {
@@ -24,10 +25,25 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
     viewCarImage();
 
     //:::::::::::::::::::    MQTT Section   :::::::::::::::::::::::::::::::::::
+
+
+    // Create QSettings object to read the configuration file
+    QSettings settings("/opt/ev2/bin/config.ini", QSettings::IniFormat);
+    // Read the server IP address and port number
+    QString serverIp = settings.value("server_config/SERVER_IP").toString();
+    int serverPort = settings.value("server_config/SERVER_PORT").toInt();
+
+    // Print the values
+    qDebug() << "Server IP:" << serverIp;
+    qDebug() << "Server Port:" << serverPort;
+
     m_client = new QMqttClient(this);
-    m_client->setHostname("192.168.3.2");
-//    m_client->setHostname(getLocalIpAddress());
-    m_client->setPort(1883);
+    m_client->setHostname(serverIp);
+    m_client->setPort(serverPort);
+//    m_client->setHostname("192.168.3.2");
+    //    m_client->setHostname(getLocalIpAddress());
+//    m_client->setPort(1883);
+
 
     qDebug() << "INFO: Status:" << m_client->state();
     connect_to_broker();

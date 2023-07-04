@@ -31,4 +31,4 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
-    config.txt
+    config.ini

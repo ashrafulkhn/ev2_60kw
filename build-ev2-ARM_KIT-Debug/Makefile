@@ -63,7 +63,8 @@ OBJECTS       = main.o \
 		qrc_resources.o \
 		moc_dialog.o \
 		moc_manual_op.o
-DIST          = /opt/sysroots/cortexa53-crypto-phytec-linux/usr/lib/mkspecs/features/spec_pre.prf \
+DIST          = ../ev2_b1105/config.ini \
+		/opt/sysroots/cortexa53-crypto-phytec-linux/usr/lib/mkspecs/features/spec_pre.prf \
 		/opt/sysroots/cortexa53-crypto-phytec-linux/usr/lib/mkspecs/common/unix.conf \
 		/opt/sysroots/cortexa53-crypto-phytec-linux/usr/lib/mkspecs/common/linux.conf \
 		/opt/sysroots/cortexa53-crypto-phytec-linux/usr/lib/mkspecs/common/sanitize.conf \
