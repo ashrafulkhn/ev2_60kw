@@ -20,9 +20,9 @@ Build
 Empty
 
 <p>
-LD_LIBRARY_PATH how to add lib dir to path 
-To add a directory containing shared libraries to the LD_LIBRARY_PATH environment variable, you can use the following command:
-bashCopy code
+    LD_LIBRARY_PATH how to add lib dir to the path
+    To add a directory containing shared libraries to the LD_LIBRARY_PATH environment variable, you can use the following command:
+**code**
 export LD_LIBRARY_PATH=/path/to/lib/dir:$LD_LIBRARY_PATH
 Replace /path/to/lib/dir with the actual path to the directory containing the shared libraries you want to use.
 This command prepends the specified directory to the existing value of LD_LIBRARY_PATH, if any. This way, any shared libraries in the directory will be searched for before the default system directories.
