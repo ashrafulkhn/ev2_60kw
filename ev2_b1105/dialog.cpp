@@ -220,20 +220,10 @@ void Dialog::process_message(const QByteArray &message, const QMqttTopicName &to
     QString topicName = topic.name();
     QString payload = QString::fromUtf8(message);
 
-    qDebug() << "Tpoic : " << topicName << " Payload : " << payload;
+    qDebug() << "MESSGAE: Tpoic : " << topicName << " Payload : " << payload;
 
-    if(topic == (auth_stat)){
-        emit auth_status(payload, topicName);
-    }
-    else if(topic == (connect_string)){
-        setConnectString(payload);
-        emit auth_status(payload, topicName);
-    }
 
-    else if (topic == charger_connected){
-        emit page4_action(payload, topicName);
-    }
-    else if (topic == soc_1){
+    if (topic == soc_1){
         ui->soc_val_g1->setText(payload + " %");
     }
     else if (topic == voltage_1){
@@ -248,8 +238,21 @@ void Dialog::process_message(const QByteArray &message, const QMqttTopicName &to
     else if (topic == energy_1){
         ui->energy_cons_val_g1->setText(payload + " kWh");
     }
-    else if (topic == charge_stopped) {
-        emit page5_action();
+
+    else if (topic == soc_2){
+        ui->soc_val_g1_3->setText(payload + " %");
+    }
+    else if (topic == voltage_2){
+        ui->voltage_val_g1_3->setText(payload + " V");
+    }
+    else if (topic == current_2){
+        ui->current_val_g1_3->setText(payload + " A");
+    }
+    else if (topic == full_soc_2){
+        ui->time_t_f_soc_val_g1_3->setText(payload + " Sec");
+    }
+    else if (topic == energy_2){
+        ui->energy_cons_val_g1_3->setText(payload + " kWh");
     }
 }
 

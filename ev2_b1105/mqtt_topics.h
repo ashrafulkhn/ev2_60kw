@@ -90,11 +90,11 @@
 #define ENERGY_1            I_1_91
 
 //Info Page topics (GUN2)
-#define SOC_2               I_1_121
-#define VOLTAGE_2           I_1_21
-#define CURRENT_2           I_1_31
-#define FULL_SOC_2          I_1_131
-#define ENERGY_2            I_1_91
+#define SOC_2               I_1_122
+#define VOLTAGE_2           I_1_22
+#define CURRENT_2           I_1_32
+#define FULL_SOC_2          I_1_132
+#define ENERGY_2            I_1_92
 
 //Messages or Payloads (From topic I_1_51)
 #define STATE_A "state_a" // After diconnecting charger (Default State)

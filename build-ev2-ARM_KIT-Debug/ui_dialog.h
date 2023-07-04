@@ -48,14 +48,12 @@ public:
     QLabel *soc_val_g1_3;
     QLabel *voltage_g1_3;
     QLabel *voltage_val_g1_3;
+    QLabel *current_g1_3;
     QLabel *current_val_g1_3;
-    QLabel *power_g1_3;
-    QLabel *power_val_g1_3;
     QLabel *Time_t_F_soc_g1_3;
     QLabel *time_t_f_soc_val_g1_3;
     QLabel *energy_cons_g1_3;
     QLabel *energy_cons_val_g1_3;
-    QLabel *current_g1_3;
     QWidget *horizontalLayoutWidget_6;
     QHBoxLayout *horizontalLayout_6;
     QLabel *session_cost_g1_3;
@@ -79,14 +77,16 @@ public:
     QLabel *soc_val_g1;
     QLabel *voltage_g1;
     QLabel *voltage_val_g1;
+    QLabel *current_g1;
     QLabel *current_val_g1;
-    QLabel *power_g1;
-    QLabel *power_val_g1;
     QLabel *Time_t_F_soc_g1;
     QLabel *time_t_f_soc_val_g1;
     QLabel *energy_cons_g1;
     QLabel *energy_cons_val_g1;
-    QLabel *current_g1;
+    QWidget *horizontalLayoutWidget_7;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *session_cost_g1;
+    QLabel *session_cost_val_g1;
     QWidget *page_2;
     QLabel *label_5;
     QFrame *frame_3;
@@ -196,7 +196,7 @@ public:
         page->setObjectName(QString::fromUtf8("page"));
         formLayoutWidget_3 = new QWidget(page);
         formLayoutWidget_3->setObjectName(QString::fromUtf8("formLayoutWidget_3"));
-        formLayoutWidget_3->setGeometry(QRect(70, 40, 491, 231));
+        formLayoutWidget_3->setGeometry(QRect(20, 20, 571, 231));
         formLayout_3 = new QFormLayout(formLayoutWidget_3);
         formLayout_3->setObjectName(QString::fromUtf8("formLayout_3"));
         formLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -226,64 +226,52 @@ public:
 
         formLayout_3->setWidget(1, QFormLayout::FieldRole, voltage_val_g1_3);
 
-        current_val_g1_3 = new QLabel(formLayoutWidget_3);
-        current_val_g1_3->setObjectName(QString::fromUtf8("current_val_g1_3"));
-        current_val_g1_3->setFont(font6);
-
-        formLayout_3->setWidget(2, QFormLayout::FieldRole, current_val_g1_3);
-
-        power_g1_3 = new QLabel(formLayoutWidget_3);
-        power_g1_3->setObjectName(QString::fromUtf8("power_g1_3"));
-        power_g1_3->setFont(font6);
-
-        formLayout_3->setWidget(3, QFormLayout::LabelRole, power_g1_3);
-
-        power_val_g1_3 = new QLabel(formLayoutWidget_3);
-        power_val_g1_3->setObjectName(QString::fromUtf8("power_val_g1_3"));
-        power_val_g1_3->setFont(font6);
-
-        formLayout_3->setWidget(3, QFormLayout::FieldRole, power_val_g1_3);
-
-        Time_t_F_soc_g1_3 = new QLabel(formLayoutWidget_3);
-        Time_t_F_soc_g1_3->setObjectName(QString::fromUtf8("Time_t_F_soc_g1_3"));
-        Time_t_F_soc_g1_3->setFont(font6);
-
-        formLayout_3->setWidget(4, QFormLayout::LabelRole, Time_t_F_soc_g1_3);
-
-        time_t_f_soc_val_g1_3 = new QLabel(formLayoutWidget_3);
-        time_t_f_soc_val_g1_3->setObjectName(QString::fromUtf8("time_t_f_soc_val_g1_3"));
-        time_t_f_soc_val_g1_3->setFont(font6);
-
-        formLayout_3->setWidget(4, QFormLayout::FieldRole, time_t_f_soc_val_g1_3);
-
-        energy_cons_g1_3 = new QLabel(formLayoutWidget_3);
-        energy_cons_g1_3->setObjectName(QString::fromUtf8("energy_cons_g1_3"));
-        energy_cons_g1_3->setFont(font6);
-
-        formLayout_3->setWidget(5, QFormLayout::LabelRole, energy_cons_g1_3);
-
-        energy_cons_val_g1_3 = new QLabel(formLayoutWidget_3);
-        energy_cons_val_g1_3->setObjectName(QString::fromUtf8("energy_cons_val_g1_3"));
-        energy_cons_val_g1_3->setFont(font6);
-
-        formLayout_3->setWidget(5, QFormLayout::FieldRole, energy_cons_val_g1_3);
-
         current_g1_3 = new QLabel(formLayoutWidget_3);
         current_g1_3->setObjectName(QString::fromUtf8("current_g1_3"));
         current_g1_3->setFont(font6);
 
         formLayout_3->setWidget(2, QFormLayout::LabelRole, current_g1_3);
 
+        current_val_g1_3 = new QLabel(formLayoutWidget_3);
+        current_val_g1_3->setObjectName(QString::fromUtf8("current_val_g1_3"));
+        current_val_g1_3->setFont(font6);
+
+        formLayout_3->setWidget(2, QFormLayout::FieldRole, current_val_g1_3);
+
+        Time_t_F_soc_g1_3 = new QLabel(formLayoutWidget_3);
+        Time_t_F_soc_g1_3->setObjectName(QString::fromUtf8("Time_t_F_soc_g1_3"));
+        Time_t_F_soc_g1_3->setFont(font6);
+
+        formLayout_3->setWidget(3, QFormLayout::LabelRole, Time_t_F_soc_g1_3);
+
+        time_t_f_soc_val_g1_3 = new QLabel(formLayoutWidget_3);
+        time_t_f_soc_val_g1_3->setObjectName(QString::fromUtf8("time_t_f_soc_val_g1_3"));
+        time_t_f_soc_val_g1_3->setFont(font6);
+
+        formLayout_3->setWidget(3, QFormLayout::FieldRole, time_t_f_soc_val_g1_3);
+
+        energy_cons_g1_3 = new QLabel(formLayoutWidget_3);
+        energy_cons_g1_3->setObjectName(QString::fromUtf8("energy_cons_g1_3"));
+        energy_cons_g1_3->setFont(font6);
+
+        formLayout_3->setWidget(4, QFormLayout::LabelRole, energy_cons_g1_3);
+
+        energy_cons_val_g1_3 = new QLabel(formLayoutWidget_3);
+        energy_cons_val_g1_3->setObjectName(QString::fromUtf8("energy_cons_val_g1_3"));
+        energy_cons_val_g1_3->setFont(font6);
+
+        formLayout_3->setWidget(4, QFormLayout::FieldRole, energy_cons_val_g1_3);
+
         horizontalLayoutWidget_6 = new QWidget(page);
         horizontalLayoutWidget_6->setObjectName(QString::fromUtf8("horizontalLayoutWidget_6"));
-        horizontalLayoutWidget_6->setGeometry(QRect(170, 410, 381, 80));
+        horizontalLayoutWidget_6->setGeometry(QRect(130, 400, 465, 80));
         horizontalLayout_6 = new QHBoxLayout(horizontalLayoutWidget_6);
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
         session_cost_g1_3 = new QLabel(horizontalLayoutWidget_6);
         session_cost_g1_3->setObjectName(QString::fromUtf8("session_cost_g1_3"));
         session_cost_g1_3->setStyleSheet(QString::fromUtf8("color: rgb(52, 101, 164);\n"
-"font: 700 11pt \"Ubuntu Condensed\";\n"
+"font: 700 11pt;\n"
 "font-size: 40px;"));
 
         horizontalLayout_6->addWidget(session_cost_g1_3);
@@ -291,7 +279,7 @@ public:
         session_cost_val_g1_3 = new QLabel(horizontalLayoutWidget_6);
         session_cost_val_g1_3->setObjectName(QString::fromUtf8("session_cost_val_g1_3"));
         session_cost_val_g1_3->setStyleSheet(QString::fromUtf8("color: rgb(52, 101, 164);\n"
-"font: 700 11pt \"Ubuntu Condensed\";\n"
+"font: 700 11pt;\n"
 "font-size: 40px;"));
 
         horizontalLayout_6->addWidget(session_cost_val_g1_3);
@@ -357,7 +345,7 @@ public:
         page_6->setObjectName(QString::fromUtf8("page_6"));
         formLayoutWidget = new QWidget(page_6);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(110, 40, 421, 231));
+        formLayoutWidget->setGeometry(QRect(20, 40, 551, 231));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -386,53 +374,63 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, voltage_val_g1);
 
+        current_g1 = new QLabel(formLayoutWidget);
+        current_g1->setObjectName(QString::fromUtf8("current_g1"));
+        current_g1->setFont(font6);
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, current_g1);
+
         current_val_g1 = new QLabel(formLayoutWidget);
         current_val_g1->setObjectName(QString::fromUtf8("current_val_g1"));
         current_val_g1->setFont(font6);
 
         formLayout->setWidget(2, QFormLayout::FieldRole, current_val_g1);
 
-        power_g1 = new QLabel(formLayoutWidget);
-        power_g1->setObjectName(QString::fromUtf8("power_g1"));
-        power_g1->setFont(font6);
-
-        formLayout->setWidget(3, QFormLayout::LabelRole, power_g1);
-
-        power_val_g1 = new QLabel(formLayoutWidget);
-        power_val_g1->setObjectName(QString::fromUtf8("power_val_g1"));
-        power_val_g1->setFont(font6);
-
-        formLayout->setWidget(3, QFormLayout::FieldRole, power_val_g1);
-
         Time_t_F_soc_g1 = new QLabel(formLayoutWidget);
         Time_t_F_soc_g1->setObjectName(QString::fromUtf8("Time_t_F_soc_g1"));
         Time_t_F_soc_g1->setFont(font6);
 
-        formLayout->setWidget(4, QFormLayout::LabelRole, Time_t_F_soc_g1);
+        formLayout->setWidget(3, QFormLayout::LabelRole, Time_t_F_soc_g1);
 
         time_t_f_soc_val_g1 = new QLabel(formLayoutWidget);
         time_t_f_soc_val_g1->setObjectName(QString::fromUtf8("time_t_f_soc_val_g1"));
         time_t_f_soc_val_g1->setFont(font6);
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, time_t_f_soc_val_g1);
+        formLayout->setWidget(3, QFormLayout::FieldRole, time_t_f_soc_val_g1);
 
         energy_cons_g1 = new QLabel(formLayoutWidget);
         energy_cons_g1->setObjectName(QString::fromUtf8("energy_cons_g1"));
         energy_cons_g1->setFont(font6);
 
-        formLayout->setWidget(5, QFormLayout::LabelRole, energy_cons_g1);
+        formLayout->setWidget(4, QFormLayout::LabelRole, energy_cons_g1);
 
         energy_cons_val_g1 = new QLabel(formLayoutWidget);
         energy_cons_val_g1->setObjectName(QString::fromUtf8("energy_cons_val_g1"));
         energy_cons_val_g1->setFont(font6);
 
-        formLayout->setWidget(5, QFormLayout::FieldRole, energy_cons_val_g1);
+        formLayout->setWidget(4, QFormLayout::FieldRole, energy_cons_val_g1);
 
-        current_g1 = new QLabel(formLayoutWidget);
-        current_g1->setObjectName(QString::fromUtf8("current_g1"));
-        current_g1->setFont(font6);
+        horizontalLayoutWidget_7 = new QWidget(page_6);
+        horizontalLayoutWidget_7->setObjectName(QString::fromUtf8("horizontalLayoutWidget_7"));
+        horizontalLayoutWidget_7->setGeometry(QRect(110, 410, 465, 80));
+        horizontalLayout_7 = new QHBoxLayout(horizontalLayoutWidget_7);
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        horizontalLayout_7->setContentsMargins(0, 0, 0, 0);
+        session_cost_g1 = new QLabel(horizontalLayoutWidget_7);
+        session_cost_g1->setObjectName(QString::fromUtf8("session_cost_g1"));
+        session_cost_g1->setStyleSheet(QString::fromUtf8("color: rgb(52, 101, 164);\n"
+"font: 700 11pt;\n"
+"font-size: 40px;"));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, current_g1);
+        horizontalLayout_7->addWidget(session_cost_g1);
+
+        session_cost_val_g1 = new QLabel(horizontalLayoutWidget_7);
+        session_cost_val_g1->setObjectName(QString::fromUtf8("session_cost_val_g1"));
+        session_cost_val_g1->setStyleSheet(QString::fromUtf8("color: rgb(52, 101, 164);\n"
+"font: 700 11pt;\n"
+"font-size: 40px;"));
+
+        horizontalLayout_7->addWidget(session_cost_val_g1);
 
         stackedWidget_1->addWidget(page_6);
         page_2 = new QWidget();
@@ -457,8 +455,8 @@ public:
 
         retranslateUi(Dialog);
 
-        stackedWidget_2->setCurrentIndex(0);
-        stackedWidget_1->setCurrentIndex(4);
+        stackedWidget_2->setCurrentIndex(3);
+        stackedWidget_1->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(Dialog);
@@ -480,16 +478,14 @@ public:
         soc_val_g1_3->setText(QCoreApplication::translate("Dialog", "    20%", nullptr));
         voltage_g1_3->setText(QCoreApplication::translate("Dialog", "Voltage                                   :", nullptr));
         voltage_val_g1_3->setText(QCoreApplication::translate("Dialog", "    340V", nullptr));
+        current_g1_3->setText(QCoreApplication::translate("Dialog", "Current                                   :", nullptr));
         current_val_g1_3->setText(QCoreApplication::translate("Dialog", "    80A", nullptr));
-        power_g1_3->setText(QCoreApplication::translate("Dialog", "Power                                      :", nullptr));
-        power_val_g1_3->setText(QCoreApplication::translate("Dialog", "    27.2kW", nullptr));
         Time_t_F_soc_g1_3->setText(QCoreApplication::translate("Dialog", "Time to Full SOC                  :", nullptr));
         time_t_f_soc_val_g1_3->setText(QCoreApplication::translate("Dialog", "    500secs", nullptr));
         energy_cons_g1_3->setText(QCoreApplication::translate("Dialog", "Energy Consumed               :", nullptr));
         energy_cons_val_g1_3->setText(QCoreApplication::translate("Dialog", "    0.05kWh", nullptr));
-        current_g1_3->setText(QCoreApplication::translate("Dialog", "Current                                   :", nullptr));
         session_cost_g1_3->setText(QCoreApplication::translate("Dialog", "Session Cost   : ", nullptr));
-        session_cost_val_g1_3->setText(QCoreApplication::translate("Dialog", "Rs. 120", nullptr));
+        session_cost_val_g1_3->setText(QCoreApplication::translate("Dialog", "Rs. 00.00", nullptr));
         label_13->setText(QCoreApplication::translate("Dialog", "Please Disconnect the Charger", nullptr));
         label_9->setText(QCoreApplication::translate("Dialog", "No Network, Try Other Stations", nullptr));
         label_4->setText(QString());
@@ -500,14 +496,14 @@ public:
         soc_val_g1->setText(QString());
         voltage_g1->setText(QCoreApplication::translate("Dialog", "Voltage                        :", nullptr));
         voltage_val_g1->setText(QString());
+        current_g1->setText(QCoreApplication::translate("Dialog", "Current                        :", nullptr));
         current_val_g1->setText(QString());
-        power_g1->setText(QCoreApplication::translate("Dialog", "Power                           :", nullptr));
-        power_val_g1->setText(QString());
         Time_t_F_soc_g1->setText(QCoreApplication::translate("Dialog", "Time to Full SOC       :", nullptr));
         time_t_f_soc_val_g1->setText(QString());
         energy_cons_g1->setText(QCoreApplication::translate("Dialog", "Energy Consumed    :", nullptr));
         energy_cons_val_g1->setText(QString());
-        current_g1->setText(QCoreApplication::translate("Dialog", "Current                        :", nullptr));
+        session_cost_g1->setText(QCoreApplication::translate("Dialog", "Session Cost   : ", nullptr));
+        session_cost_val_g1->setText(QCoreApplication::translate("Dialog", "Rs. 00.00", nullptr));
         label_5->setText(QCoreApplication::translate("Dialog", "Please Disconnect the Charger", nullptr));
     } // retranslateUi
 
