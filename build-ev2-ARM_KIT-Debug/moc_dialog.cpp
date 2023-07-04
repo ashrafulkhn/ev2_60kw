@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Dialog_t {
-    QByteArrayData data[26];
-    char stringdata0[380];
+    QByteArrayData data[27];
+    char stringdata0[402];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -57,7 +57,8 @@ QT_MOC_LITERAL(21, 288, 14), // "page4_reaction"
 QT_MOC_LITERAL(22, 303, 14), // "page5_reaction"
 QT_MOC_LITERAL(23, 318, 18), // "brokerDisconnected"
 QT_MOC_LITERAL(24, 337, 20), // "updateLogStateChange"
-QT_MOC_LITERAL(25, 358, 21) // "on_btn_manual_clicked"
+QT_MOC_LITERAL(25, 358, 21), // "on_btn_manual_clicked"
+QT_MOC_LITERAL(26, 380, 21) // "on_pushButton_clicked"
 
     },
     "Dialog\0auth_status\0\0connect_charger_message\0"
@@ -69,7 +70,8 @@ QT_MOC_LITERAL(25, 358, 21) // "on_btn_manual_clicked"
     "message\0QMqttTopicName\0topic\0"
     "rfid_read_react\0payload\0page4_reaction\0"
     "page5_reaction\0brokerDisconnected\0"
-    "updateLogStateChange\0on_btn_manual_clicked"
+    "updateLogStateChange\0on_btn_manual_clicked\0"
+    "on_pushButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -79,7 +81,7 @@ static const uint qt_meta_data_Dialog[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      20,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -87,28 +89,29 @@ static const uint qt_meta_data_Dialog[] = {
       12,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,  114,    2, 0x06 /* Public */,
-       3,    2,  119,    2, 0x06 /* Public */,
-       4,    2,  124,    2, 0x06 /* Public */,
-       5,    2,  129,    2, 0x06 /* Public */,
-       6,    0,  134,    2, 0x06 /* Public */,
-       7,    0,  135,    2, 0x06 /* Public */,
-       8,    0,  136,    2, 0x06 /* Public */,
-       9,    0,  137,    2, 0x06 /* Public */,
-      10,    0,  138,    2, 0x06 /* Public */,
-      11,    0,  139,    2, 0x06 /* Public */,
-      12,    0,  140,    2, 0x06 /* Public */,
-      13,    0,  141,    2, 0x06 /* Public */,
+       1,    2,  119,    2, 0x06 /* Public */,
+       3,    2,  124,    2, 0x06 /* Public */,
+       4,    2,  129,    2, 0x06 /* Public */,
+       5,    2,  134,    2, 0x06 /* Public */,
+       6,    0,  139,    2, 0x06 /* Public */,
+       7,    0,  140,    2, 0x06 /* Public */,
+       8,    0,  141,    2, 0x06 /* Public */,
+       9,    0,  142,    2, 0x06 /* Public */,
+      10,    0,  143,    2, 0x06 /* Public */,
+      11,    0,  144,    2, 0x06 /* Public */,
+      12,    0,  145,    2, 0x06 /* Public */,
+      13,    0,  146,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      14,    0,  142,    2, 0x0a /* Public */,
-      15,    2,  143,    2, 0x0a /* Public */,
-      19,    2,  148,    2, 0x0a /* Public */,
-      21,    2,  153,    2, 0x0a /* Public */,
-      22,    0,  158,    2, 0x0a /* Public */,
-      23,    0,  159,    2, 0x08 /* Private */,
-      24,    0,  160,    2, 0x08 /* Private */,
-      25,    0,  161,    2, 0x08 /* Private */,
+      14,    0,  147,    2, 0x0a /* Public */,
+      15,    2,  148,    2, 0x0a /* Public */,
+      19,    2,  153,    2, 0x0a /* Public */,
+      21,    2,  158,    2, 0x0a /* Public */,
+      22,    0,  163,    2, 0x0a /* Public */,
+      23,    0,  164,    2, 0x08 /* Private */,
+      24,    0,  165,    2, 0x08 /* Private */,
+      25,    0,  166,    2, 0x08 /* Private */,
+      26,    0,  167,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    2,    2,
@@ -129,6 +132,7 @@ static const uint qt_meta_data_Dialog[] = {
     QMetaType::Void, QMetaType::QByteArray, 0x80000000 | 17,   16,   18,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,   20,   18,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,   20,   18,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -163,6 +167,7 @@ void Dialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 17: _t->brokerDisconnected(); break;
         case 18: _t->updateLogStateChange(); break;
         case 19: _t->on_btn_manual_clicked(); break;
+        case 20: _t->on_pushButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -294,13 +299,13 @@ int Dialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 21;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 20)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 21;
     }
     return _id;
 }

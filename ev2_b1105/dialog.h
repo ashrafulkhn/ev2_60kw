@@ -142,6 +142,8 @@ private slots:
     void updateLogStateChange();
     void on_btn_manual_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     QString auth_stat               =   AUTH_STATUS;
     QString connect_string          =   CONNECT_CHARGER;

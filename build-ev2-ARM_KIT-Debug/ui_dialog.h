@@ -28,6 +28,7 @@ public:
     QFrame *frame;
     QLabel *label;
     QPushButton *btn_manual;
+    QPushButton *pushButton;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *label_2;
@@ -119,6 +120,9 @@ public:
         QFont font1;
         font1.setPointSize(15);
         btn_manual->setFont(font1);
+        pushButton = new QPushButton(frame);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(20, 30, 101, 31));
         horizontalLayoutWidget = new QWidget(Dialog);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(10, 110, 1251, 41));
@@ -467,6 +471,7 @@ public:
         Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "Dialog", nullptr));
         label->setText(QCoreApplication::translate("Dialog", "Ultra Fast Chargers", nullptr));
         btn_manual->setText(QCoreApplication::translate("Dialog", "Goto Manual Mode", nullptr));
+        pushButton->setText(QCoreApplication::translate("Dialog", "Go Online", nullptr));
         label_2->setText(QCoreApplication::translate("Dialog", "Gun 1", nullptr));
         label_3->setText(QCoreApplication::translate("Dialog", "Gun 2", nullptr));
         label_12->setText(QCoreApplication::translate("Dialog", "No Network, Try Other Stations", nullptr));

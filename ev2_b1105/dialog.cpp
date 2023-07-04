@@ -364,3 +364,9 @@ void Dialog::viewCarImage(){
     ui->label_4->setPixmap(ev_car_tranformed);
     ui->label_7->setPixmap(mirrored_ev_car);
 }
+
+void Dialog::on_pushButton_clicked()
+{
+    connect_to_broker();
+}
+
