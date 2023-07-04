@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>800</height>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,6 +60,24 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_manual">
+    <property name="geometry">
+     <rect>
+      <x>1030</x>
+      <y>20</y>
+      <width>211</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Goto Manual Mode</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
@@ -67,7 +85,7 @@
      <x>10</x>
      <y>110</y>
      <width>1251</width>
-     <height>61</height>
+     <height>41</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -117,14 +135,14 @@
      <x>640</x>
      <y>200</y>
      <width>611</width>
-     <height>521</height>
+     <height>481</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true"/>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page_4">
     <widget class="QLabel" name="label_12">
@@ -150,10 +168,10 @@ font-size: 40px;</string>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>0</y>
+       <x>0</x>
+       <y>-10</y>
        <width>601</width>
-       <height>521</height>
+       <height>491</height>
       </rect>
      </property>
      <property name="font">
@@ -458,31 +476,13 @@ font-size: 40px;</string>
     </widget>
    </widget>
   </widget>
-  <widget class="QPushButton" name="btn_manual">
-   <property name="geometry">
-    <rect>
-     <x>1050</x>
-     <y>740</y>
-     <width>211</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>15</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Goto Manual Mode</string>
-   </property>
-  </widget>
   <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>190</y>
+     <y>180</y>
      <width>601</width>
-     <height>541</height>
+     <height>531</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -497,14 +497,14 @@ font-size: 40px;</string>
       <x>10</x>
       <y>10</y>
       <width>581</width>
-      <height>521</height>
+      <height>511</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_3">
      <widget class="QLabel" name="label_9">
@@ -532,8 +532,8 @@ font-size: 40px;</string>
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>601</width>
-        <height>521</height>
+        <width>571</width>
+        <height>501</height>
        </rect>
       </property>
       <property name="font">
@@ -810,9 +810,9 @@ font-size: 40px;</string>
    <property name="geometry">
     <rect>
      <x>630</x>
-     <y>190</y>
+     <y>180</y>
      <width>631</width>
-     <height>541</height>
+     <height>531</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -827,7 +827,6 @@ font-size: 40px;</string>
   <zorder>frame</zorder>
   <zorder>horizontalLayoutWidget</zorder>
   <zorder>stackedWidget_2</zorder>
-  <zorder>btn_manual</zorder>
  </widget>
  <resources/>
  <connections/>

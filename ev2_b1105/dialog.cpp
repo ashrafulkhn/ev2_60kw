@@ -25,10 +25,11 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
 
     //:::::::::::::::::::    MQTT Section   :::::::::::::::::::::::::::::::::::
     m_client = new QMqttClient(this);
-    m_client->setHostname("192.168.3.3");
+    m_client->setHostname("192.168.3.2");
 //    m_client->setHostname(getLocalIpAddress());
     m_client->setPort(1883);
 
+    qDebug() << "INFO: Status:" << m_client->state();
     connect_to_broker();
     m_client->requestPing();
 
@@ -39,7 +40,7 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
 
     //:::::::::::::::::::    MQTT Section   :::::::::::::::::::::::::::::::::::
 
-    qDebug() << "State:" << m_client->state();
+    qDebug() << "INFO: Status:" << m_client->state();
 
     // Connect signals to slots for custom events
 //    QObject::connect(this, &Dialog::rfid_read_action, this, &Dialog::rfid_read_react);
@@ -53,9 +54,9 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
 
     connect(m_client, &QMqttClient::pingResponseReceived, this, [this]() {
         const QString content = QDateTime::currentDateTime().toString()
-                    + QLatin1String(" PingResponse")
+                    + QLatin1String("INFO: PingResponse")
                     + QLatin1Char('\n');
-        qDebug() << "Ping Response: " << content;
+        qDebug() << "INFO: Ping Response: " << content;
 
     });
 }
@@ -66,20 +67,59 @@ Dialog::~Dialog()
     delete m_client;
     qDebug() << "Ojects detelted from Memory.";
  }
-//Manupulate the Car Image and display to the label only if the network is connected to Mqtt broker.
-void Dialog::viewCarImage(){
-    QPixmap ev_car(":/data/image/ev_car.png");
-    QPixmap ev_car_tranformed = ev_car.scaledToWidth(400, Qt::SmoothTransformation);
-    QImage ev_car_image = ev_car_tranformed.toImage();
-    QImage mirrored_ev_car_image = ev_car_image.mirrored(true, false);
-    QPixmap mirrored_ev_car = QPixmap::fromImage(mirrored_ev_car_image);
-    ui->label_4->setPixmap(ev_car_tranformed);
-    ui->label_7->setPixmap(mirrored_ev_car);
-}
 
+#if 0
 void Dialog::setClientPort(int iPort)
 {
     m_client->setPort(iPort);
+}
+#endif
+
+void Dialog::connect_to_broker(){
+    qDebug() << "INFO: Status :" << m_client->state();
+    if (m_client->state() == QMqttClient::Disconnected) {
+        qDebug() << "INFO: Connecting to broker..." ;
+        m_client->connectToHost();
+        qDebug() << "INFO: Status :" << m_client->state();
+    }
+    else if(m_client->state() == QMqttClient::Connecting){
+        qDebug() << "INFO: Connecting to broker..." ;
+        m_client->connectToHost();
+        qDebug() << "INFO: Status :" << m_client->state();
+    }
+}
+
+void Dialog::brokerDisconnected()
+{
+    qDebug() << "brokerDisconnected" << m_client->state();
+    //    ui->buttonConnect->setText(tr("Connect"));
+    ui->stackedWidget_1->setCurrentIndex(0);
+    ui->stackedWidget_2->setCurrentIndex(0);
+    while (true) {
+        if (m_client->state() == QMqttClient::Disconnected){
+            qDebug() << "Reconnecting..." << m_client->state();
+            this->connect_to_broker();
+            if (m_client->state() == QMqttClient::Connected){
+                break;
+            }
+        }
+    }
+}
+
+void Dialog::updateLogStateChange(){
+    qDebug() << "updateLogStateChange" << m_client->state();
+    if(m_client->state()==2){
+        ui->stackedWidget_1->setCurrentIndex(3);
+        ui->stackedWidget_2->setCurrentIndex(3);
+    }
+    if(m_client->state()==0){
+        ui->stackedWidget_1->setCurrentIndex(0);
+        ui->stackedWidget_2->setCurrentIndex(0);
+    }
+    if(m_client->state()==1){
+        ui->stackedWidget_1->setCurrentIndex(0);
+        ui->stackedWidget_2->setCurrentIndex(0);
+    }
 }
 
 void Dialog::topic_subscription(){
@@ -99,7 +139,7 @@ void Dialog::topic_subscription(){
                 return;
             }
             else {
-                    qDebug() << "State: " << m_client->state();
+                    qDebug() << "INFO: State: " << m_client->state();
                 }
 
         m_client->subscribe(i111);
@@ -173,6 +213,44 @@ void Dialog::topic_subscription(){
         ui->stackedWidget_1->setCurrentIndex(0);
         ui->stackedWidget_2->setCurrentIndex(0);
     }
+    qDebug() << "INFO: All topics subscribed!!";
+}
+
+void Dialog::process_message(const QByteArray &message, const QMqttTopicName &topic){
+    QString topicName = topic.name();
+    QString payload = QString::fromUtf8(message);
+
+    qDebug() << "Tpoic : " << topicName << " Payload : " << payload;
+
+    if(topic == (auth_stat)){
+        emit auth_status(payload, topicName);
+    }
+    else if(topic == (connect_string)){
+        setConnectString(payload);
+        emit auth_status(payload, topicName);
+    }
+
+    else if (topic == charger_connected){
+        emit page4_action(payload, topicName);
+    }
+    else if (topic == soc_1){
+        ui->soc_val_g1->setText(payload + " %");
+    }
+    else if (topic == voltage_1){
+        ui->voltage_val_g1->setText(payload + " V");
+    }
+    else if (topic == current_1){
+        ui->current_val_g1->setText(payload + " A");
+    }
+    else if (topic == full_soc_1){
+        ui->time_t_f_soc_val_g1->setText(payload + " Sec");
+    }
+    else if (topic == energy_1){
+        ui->energy_cons_val_g1->setText(payload + " kWh");
+    }
+    else if (topic == charge_stopped) {
+        emit page5_action();
+    }
 }
 
 void Dialog::rfid_read_react(QString payload, QString topic){
@@ -216,42 +294,7 @@ void Dialog::page5_reaction()
     ui->stackedWidget_1->setCurrentIndex(4);
 }
 
-void Dialog::process_message(const QByteArray &message, const QMqttTopicName &topic){
-    QString topicName = topic.name();
-    QString payload = QString::fromUtf8(message);
 
-    qDebug() << "Tpoic : " << topicName << " Payload : " << payload;
-
-    if(topic == (auth_stat)){
-        emit auth_status(payload, topicName);
-    }
-    else if(topic == (connect_string)){
-        setConnectString(payload);
-        emit auth_status(payload, topicName);
-    }
-
-    else if (topic == charger_connected){
-        emit page4_action(payload, topicName);
-    }
-    else if (topic == soc_1){
-        ui->soc_val_g1->setText(payload + " %");
-    }
-    else if (topic == voltage_1){
-        ui->voltage_val_g1->setText(payload + " V");
-    }
-    else if (topic == current_1){
-        ui->current_val_g1->setText(payload + " A");
-    }
-    else if (topic == full_soc_1){
-        ui->time_t_f_soc_val_g1->setText(payload + " Sec");
-    }
-    else if (topic == energy_1){
-        ui->energy_cons_val_g1->setText(payload + " kWh");
-    }
-    else if (topic == charge_stopped) {
-        emit page5_action();
-    }
-}
 
 QString Dialog::getLocalIpAddress()
 {
@@ -283,49 +326,13 @@ QString Dialog::getLocalIpAddress()
         return QString();
 }
 
-void Dialog::connect_to_broker(){
-    if (m_client->state() == QMqttClient::Disconnected) {
-//        ui->buttonConnect->setText(tr("Disconnect"));
-        qDebug() << "connect_to_broker." ;
-        m_client->connectToHost();
-        qDebug() << "connect_to_broker" << m_client->state();
-        ui->stackedWidget_1->setCurrentIndex(1);
-    }
-    else {
-//            ui->buttonConnect->setText(tr("Connect"));
-            m_client->disconnectFromHost();
-        }
-}
-
-void Dialog::brokerDisconnected()
-{
-    qDebug() << "brokerDisconnected" << m_client->state();
-//    ui->buttonConnect->setText(tr("Connect"));
-    ui->stackedWidget_1->setCurrentIndex(0);
-    ui->stackedWidget_2->setCurrentIndex(0);
-//    this->connect_to_broker();
-}
-
-void Dialog::updateLogStateChange(){
-    qDebug() << "updateLogStateChange" << m_client->state();
-    if(m_client->state()==2){
-        ui->stackedWidget_1->setCurrentIndex(1);
-        ui->stackedWidget_2->setCurrentIndex(1);
-    }
-    if(m_client->state()==0){
-        ui->stackedWidget_1->setCurrentIndex(0);
-        ui->stackedWidget_2->setCurrentIndex(0);
-//        this->connect_to_broker();
-    }
-}
-
-
 void Dialog::on_btn_manual_clicked()
 {
     _manual_op = new manual_op(m_client);
     _manual_op->setModal(true);
     _manual_op->setWindowTitle("::: Manual Mode :::");
     _manual_op->showFullScreen();
+//    qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
 //    _manual_op->showMaximized();
     _manual_op->exec();
 }
@@ -342,4 +349,15 @@ QString Dialog::getConnectString()
 
 std::string Dialog::getStopMessage() {
     return stopMessage;
+}
+
+//Manupulate the Car Image and display to the label only if the network is connected to Mqtt broker.
+void Dialog::viewCarImage(){
+    QPixmap ev_car(":/data/image/ev_car.png");
+    QPixmap ev_car_tranformed = ev_car.scaledToWidth(400, Qt::SmoothTransformation);
+    QImage ev_car_image = ev_car_tranformed.toImage();
+    QImage mirrored_ev_car_image = ev_car_image.mirrored(true, false);
+    QPixmap mirrored_ev_car = QPixmap::fromImage(mirrored_ev_car_image);
+    ui->label_4->setPixmap(ev_car_tranformed);
+    ui->label_7->setPixmap(mirrored_ev_car);
 }

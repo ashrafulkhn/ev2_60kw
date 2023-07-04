@@ -114,7 +114,7 @@ public:
 
     QString getLocalIpAddress();
 public slots:
-    void setClientPort(int p);
+//    void setClientPort(int p);
     void topic_subscription();
     void process_message(const QByteArray &message, const QMqttTopicName &topic);
     void rfid_read_react(QString payload, QString topic);

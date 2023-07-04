@@ -27,6 +27,7 @@ class Ui_Dialog
 public:
     QFrame *frame;
     QLabel *label;
+    QPushButton *btn_manual;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *label_2;
@@ -61,7 +62,6 @@ public:
     QLabel *session_cost_val_g1_3;
     QWidget *page_11;
     QLabel *label_13;
-    QPushButton *btn_manual;
     QFrame *frame_2;
     QStackedWidget *stackedWidget_1;
     QWidget *page_3;
@@ -95,7 +95,7 @@ public:
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QString::fromUtf8("Dialog"));
-        Dialog->resize(1280, 800);
+        Dialog->resize(1280, 720);
         Dialog->setStyleSheet(QString::fromUtf8(""));
         frame = new QFrame(Dialog);
         frame->setObjectName(QString::fromUtf8("frame"));
@@ -113,18 +113,24 @@ public:
         label->setFont(font);
         label->setStyleSheet(QString::fromUtf8("color:rgb(0, 0, 0)"));
         label->setAlignment(Qt::AlignCenter);
+        btn_manual = new QPushButton(frame);
+        btn_manual->setObjectName(QString::fromUtf8("btn_manual"));
+        btn_manual->setGeometry(QRect(1030, 20, 211, 51));
+        QFont font1;
+        font1.setPointSize(15);
+        btn_manual->setFont(font1);
         horizontalLayoutWidget = new QWidget(Dialog);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 110, 1251, 61));
+        horizontalLayoutWidget->setGeometry(QRect(10, 110, 1251, 41));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         label_2 = new QLabel(horizontalLayoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        QFont font1;
-        font1.setPointSize(20);
-        font1.setBold(true);
-        label_2->setFont(font1);
+        QFont font2;
+        font2.setPointSize(20);
+        font2.setBold(true);
+        label_2->setFont(font2);
         label_2->setStyleSheet(QString::fromUtf8("color: rgb(46, 52, 54)"));
         label_2->setAlignment(Qt::AlignCenter);
 
@@ -132,7 +138,7 @@ public:
 
         label_3 = new QLabel(horizontalLayoutWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setFont(font1);
+        label_3->setFont(font2);
         label_3->setStyleSheet(QString::fromUtf8("color: rgb(46, 52, 54)"));
         label_3->setAlignment(Qt::AlignCenter);
 
@@ -140,7 +146,7 @@ public:
 
         stackedWidget_2 = new QStackedWidget(Dialog);
         stackedWidget_2->setObjectName(QString::fromUtf8("stackedWidget_2"));
-        stackedWidget_2->setGeometry(QRect(640, 200, 611, 521));
+        stackedWidget_2->setGeometry(QRect(640, 200, 611, 481));
         stackedWidget_2->setStyleSheet(QString::fromUtf8(""));
         page_4 = new QWidget();
         page_4->setObjectName(QString::fromUtf8("page_4"));
@@ -155,18 +161,18 @@ public:
         page_8->setObjectName(QString::fromUtf8("page_8"));
         label_7 = new QLabel(page_8);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(10, 0, 601, 521));
-        QFont font2;
-        font2.setPointSize(40);
-        label_7->setFont(font2);
+        label_7->setGeometry(QRect(0, -10, 601, 491));
+        QFont font3;
+        font3.setPointSize(40);
+        label_7->setFont(font3);
         label_7->setStyleSheet(QString::fromUtf8(""));
         label_7->setAlignment(Qt::AlignCenter);
         label_11 = new QLabel(page_8);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         label_11->setGeometry(QRect(0, 420, 611, 53));
-        QFont font3;
-        font3.setPointSize(35);
-        label_11->setFont(font3);
+        QFont font4;
+        font4.setPointSize(35);
+        label_11->setFont(font4);
         label_11->setAlignment(Qt::AlignCenter);
         stackedWidget_2->addWidget(page_8);
         page_9 = new QWidget();
@@ -174,15 +180,15 @@ public:
         auth_status_2 = new QLabel(page_9);
         auth_status_2->setObjectName(QString::fromUtf8("auth_status_2"));
         auth_status_2->setGeometry(QRect(70, 40, 501, 81));
-        auth_status_2->setFont(font3);
+        auth_status_2->setFont(font4);
         auth_status_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0)"));
         auth_status_2->setAlignment(Qt::AlignCenter);
         connect_stat_2 = new QLabel(page_9);
         connect_stat_2->setObjectName(QString::fromUtf8("connect_stat_2"));
         connect_stat_2->setGeometry(QRect(60, 260, 501, 81));
-        QFont font4;
-        font4.setPointSize(30);
-        connect_stat_2->setFont(font4);
+        QFont font5;
+        font5.setPointSize(30);
+        connect_stat_2->setFont(font5);
         connect_stat_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0)"));
         connect_stat_2->setAlignment(Qt::AlignCenter);
         stackedWidget_2->addWidget(page_9);
@@ -196,75 +202,75 @@ public:
         formLayout_3->setContentsMargins(0, 0, 0, 0);
         soc_g1_3 = new QLabel(formLayoutWidget_3);
         soc_g1_3->setObjectName(QString::fromUtf8("soc_g1_3"));
-        QFont font5;
-        font5.setPointSize(20);
-        soc_g1_3->setFont(font5);
+        QFont font6;
+        font6.setPointSize(20);
+        soc_g1_3->setFont(font6);
 
         formLayout_3->setWidget(0, QFormLayout::LabelRole, soc_g1_3);
 
         soc_val_g1_3 = new QLabel(formLayoutWidget_3);
         soc_val_g1_3->setObjectName(QString::fromUtf8("soc_val_g1_3"));
-        soc_val_g1_3->setFont(font5);
+        soc_val_g1_3->setFont(font6);
 
         formLayout_3->setWidget(0, QFormLayout::FieldRole, soc_val_g1_3);
 
         voltage_g1_3 = new QLabel(formLayoutWidget_3);
         voltage_g1_3->setObjectName(QString::fromUtf8("voltage_g1_3"));
-        voltage_g1_3->setFont(font5);
+        voltage_g1_3->setFont(font6);
 
         formLayout_3->setWidget(1, QFormLayout::LabelRole, voltage_g1_3);
 
         voltage_val_g1_3 = new QLabel(formLayoutWidget_3);
         voltage_val_g1_3->setObjectName(QString::fromUtf8("voltage_val_g1_3"));
-        voltage_val_g1_3->setFont(font5);
+        voltage_val_g1_3->setFont(font6);
 
         formLayout_3->setWidget(1, QFormLayout::FieldRole, voltage_val_g1_3);
 
         current_val_g1_3 = new QLabel(formLayoutWidget_3);
         current_val_g1_3->setObjectName(QString::fromUtf8("current_val_g1_3"));
-        current_val_g1_3->setFont(font5);
+        current_val_g1_3->setFont(font6);
 
         formLayout_3->setWidget(2, QFormLayout::FieldRole, current_val_g1_3);
 
         power_g1_3 = new QLabel(formLayoutWidget_3);
         power_g1_3->setObjectName(QString::fromUtf8("power_g1_3"));
-        power_g1_3->setFont(font5);
+        power_g1_3->setFont(font6);
 
         formLayout_3->setWidget(3, QFormLayout::LabelRole, power_g1_3);
 
         power_val_g1_3 = new QLabel(formLayoutWidget_3);
         power_val_g1_3->setObjectName(QString::fromUtf8("power_val_g1_3"));
-        power_val_g1_3->setFont(font5);
+        power_val_g1_3->setFont(font6);
 
         formLayout_3->setWidget(3, QFormLayout::FieldRole, power_val_g1_3);
 
         Time_t_F_soc_g1_3 = new QLabel(formLayoutWidget_3);
         Time_t_F_soc_g1_3->setObjectName(QString::fromUtf8("Time_t_F_soc_g1_3"));
-        Time_t_F_soc_g1_3->setFont(font5);
+        Time_t_F_soc_g1_3->setFont(font6);
 
         formLayout_3->setWidget(4, QFormLayout::LabelRole, Time_t_F_soc_g1_3);
 
         time_t_f_soc_val_g1_3 = new QLabel(formLayoutWidget_3);
         time_t_f_soc_val_g1_3->setObjectName(QString::fromUtf8("time_t_f_soc_val_g1_3"));
-        time_t_f_soc_val_g1_3->setFont(font5);
+        time_t_f_soc_val_g1_3->setFont(font6);
 
         formLayout_3->setWidget(4, QFormLayout::FieldRole, time_t_f_soc_val_g1_3);
 
         energy_cons_g1_3 = new QLabel(formLayoutWidget_3);
         energy_cons_g1_3->setObjectName(QString::fromUtf8("energy_cons_g1_3"));
-        energy_cons_g1_3->setFont(font5);
+        energy_cons_g1_3->setFont(font6);
 
         formLayout_3->setWidget(5, QFormLayout::LabelRole, energy_cons_g1_3);
 
         energy_cons_val_g1_3 = new QLabel(formLayoutWidget_3);
         energy_cons_val_g1_3->setObjectName(QString::fromUtf8("energy_cons_val_g1_3"));
-        energy_cons_val_g1_3->setFont(font5);
+        energy_cons_val_g1_3->setFont(font6);
 
         formLayout_3->setWidget(5, QFormLayout::FieldRole, energy_cons_val_g1_3);
 
         current_g1_3 = new QLabel(formLayoutWidget_3);
         current_g1_3->setObjectName(QString::fromUtf8("current_g1_3"));
-        current_g1_3->setFont(font5);
+        current_g1_3->setFont(font6);
 
         formLayout_3->setWidget(2, QFormLayout::LabelRole, current_g1_3);
 
@@ -300,20 +306,14 @@ public:
 "font: 700 11pt \"Ubuntu Condensed\";\n"
 "font-size: 40px;"));
         stackedWidget_2->addWidget(page_11);
-        btn_manual = new QPushButton(Dialog);
-        btn_manual->setObjectName(QString::fromUtf8("btn_manual"));
-        btn_manual->setGeometry(QRect(1050, 740, 211, 51));
-        QFont font6;
-        font6.setPointSize(15);
-        btn_manual->setFont(font6);
         frame_2 = new QFrame(Dialog);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        frame_2->setGeometry(QRect(20, 190, 601, 541));
+        frame_2->setGeometry(QRect(20, 180, 601, 531));
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);
         stackedWidget_1 = new QStackedWidget(frame_2);
         stackedWidget_1->setObjectName(QString::fromUtf8("stackedWidget_1"));
-        stackedWidget_1->setGeometry(QRect(10, 10, 581, 521));
+        stackedWidget_1->setGeometry(QRect(10, 10, 581, 511));
         stackedWidget_1->setStyleSheet(QString::fromUtf8(""));
         page_3 = new QWidget();
         page_3->setObjectName(QString::fromUtf8("page_3"));
@@ -328,14 +328,14 @@ public:
         page_1->setObjectName(QString::fromUtf8("page_1"));
         label_4 = new QLabel(page_1);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(10, 10, 601, 521));
-        label_4->setFont(font2);
+        label_4->setGeometry(QRect(10, 10, 571, 501));
+        label_4->setFont(font3);
         label_4->setStyleSheet(QString::fromUtf8("color:rgb(46, 52, 54)"));
         label_4->setAlignment(Qt::AlignCenter);
         label_10 = new QLabel(page_1);
         label_10->setObjectName(QString::fromUtf8("label_10"));
         label_10->setGeometry(QRect(-10, 412, 591, 81));
-        label_10->setFont(font3);
+        label_10->setFont(font4);
         label_10->setAlignment(Qt::AlignCenter);
         stackedWidget_1->addWidget(page_1);
         page_5 = new QWidget();
@@ -343,13 +343,13 @@ public:
         auth_status = new QLabel(page_5);
         auth_status->setObjectName(QString::fromUtf8("auth_status"));
         auth_status->setGeometry(QRect(50, 50, 501, 81));
-        auth_status->setFont(font4);
+        auth_status->setFont(font5);
         auth_status->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0)"));
         auth_status->setAlignment(Qt::AlignCenter);
         connect_stat = new QLabel(page_5);
         connect_stat->setObjectName(QString::fromUtf8("connect_stat"));
         connect_stat->setGeometry(QRect(50, 260, 501, 81));
-        connect_stat->setFont(font4);
+        connect_stat->setFont(font5);
         connect_stat->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0)"));
         connect_stat->setAlignment(Qt::AlignCenter);
         stackedWidget_1->addWidget(page_5);
@@ -363,74 +363,74 @@ public:
         formLayout->setContentsMargins(0, 0, 0, 0);
         soc_g1 = new QLabel(formLayoutWidget);
         soc_g1->setObjectName(QString::fromUtf8("soc_g1"));
-        soc_g1->setFont(font5);
+        soc_g1->setFont(font6);
         soc_g1->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         formLayout->setWidget(0, QFormLayout::LabelRole, soc_g1);
 
         soc_val_g1 = new QLabel(formLayoutWidget);
         soc_val_g1->setObjectName(QString::fromUtf8("soc_val_g1"));
-        soc_val_g1->setFont(font5);
+        soc_val_g1->setFont(font6);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, soc_val_g1);
 
         voltage_g1 = new QLabel(formLayoutWidget);
         voltage_g1->setObjectName(QString::fromUtf8("voltage_g1"));
-        voltage_g1->setFont(font5);
+        voltage_g1->setFont(font6);
 
         formLayout->setWidget(1, QFormLayout::LabelRole, voltage_g1);
 
         voltage_val_g1 = new QLabel(formLayoutWidget);
         voltage_val_g1->setObjectName(QString::fromUtf8("voltage_val_g1"));
-        voltage_val_g1->setFont(font5);
+        voltage_val_g1->setFont(font6);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, voltage_val_g1);
 
         current_val_g1 = new QLabel(formLayoutWidget);
         current_val_g1->setObjectName(QString::fromUtf8("current_val_g1"));
-        current_val_g1->setFont(font5);
+        current_val_g1->setFont(font6);
 
         formLayout->setWidget(2, QFormLayout::FieldRole, current_val_g1);
 
         power_g1 = new QLabel(formLayoutWidget);
         power_g1->setObjectName(QString::fromUtf8("power_g1"));
-        power_g1->setFont(font5);
+        power_g1->setFont(font6);
 
         formLayout->setWidget(3, QFormLayout::LabelRole, power_g1);
 
         power_val_g1 = new QLabel(formLayoutWidget);
         power_val_g1->setObjectName(QString::fromUtf8("power_val_g1"));
-        power_val_g1->setFont(font5);
+        power_val_g1->setFont(font6);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, power_val_g1);
 
         Time_t_F_soc_g1 = new QLabel(formLayoutWidget);
         Time_t_F_soc_g1->setObjectName(QString::fromUtf8("Time_t_F_soc_g1"));
-        Time_t_F_soc_g1->setFont(font5);
+        Time_t_F_soc_g1->setFont(font6);
 
         formLayout->setWidget(4, QFormLayout::LabelRole, Time_t_F_soc_g1);
 
         time_t_f_soc_val_g1 = new QLabel(formLayoutWidget);
         time_t_f_soc_val_g1->setObjectName(QString::fromUtf8("time_t_f_soc_val_g1"));
-        time_t_f_soc_val_g1->setFont(font5);
+        time_t_f_soc_val_g1->setFont(font6);
 
         formLayout->setWidget(4, QFormLayout::FieldRole, time_t_f_soc_val_g1);
 
         energy_cons_g1 = new QLabel(formLayoutWidget);
         energy_cons_g1->setObjectName(QString::fromUtf8("energy_cons_g1"));
-        energy_cons_g1->setFont(font5);
+        energy_cons_g1->setFont(font6);
 
         formLayout->setWidget(5, QFormLayout::LabelRole, energy_cons_g1);
 
         energy_cons_val_g1 = new QLabel(formLayoutWidget);
         energy_cons_val_g1->setObjectName(QString::fromUtf8("energy_cons_val_g1"));
-        energy_cons_val_g1->setFont(font5);
+        energy_cons_val_g1->setFont(font6);
 
         formLayout->setWidget(5, QFormLayout::FieldRole, energy_cons_val_g1);
 
         current_g1 = new QLabel(formLayoutWidget);
         current_g1->setObjectName(QString::fromUtf8("current_g1"));
-        current_g1->setFont(font5);
+        current_g1->setFont(font6);
 
         formLayout->setWidget(2, QFormLayout::LabelRole, current_g1);
 
@@ -446,7 +446,7 @@ public:
         stackedWidget_1->addWidget(page_2);
         frame_3 = new QFrame(Dialog);
         frame_3->setObjectName(QString::fromUtf8("frame_3"));
-        frame_3->setGeometry(QRect(630, 190, 631, 541));
+        frame_3->setGeometry(QRect(630, 180, 631, 531));
         frame_3->setFrameShape(QFrame::StyledPanel);
         frame_3->setFrameShadow(QFrame::Raised);
         frame_3->raise();
@@ -454,12 +454,11 @@ public:
         frame->raise();
         horizontalLayoutWidget->raise();
         stackedWidget_2->raise();
-        btn_manual->raise();
 
         retranslateUi(Dialog);
 
-        stackedWidget_2->setCurrentIndex(1);
-        stackedWidget_1->setCurrentIndex(1);
+        stackedWidget_2->setCurrentIndex(0);
+        stackedWidget_1->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(Dialog);
@@ -469,6 +468,7 @@ public:
     {
         Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "Dialog", nullptr));
         label->setText(QCoreApplication::translate("Dialog", "Ultra Fast Chargers", nullptr));
+        btn_manual->setText(QCoreApplication::translate("Dialog", "Goto Manual Mode", nullptr));
         label_2->setText(QCoreApplication::translate("Dialog", "Gun 1", nullptr));
         label_3->setText(QCoreApplication::translate("Dialog", "Gun 2", nullptr));
         label_12->setText(QCoreApplication::translate("Dialog", "No Network, Try Other Stations", nullptr));
@@ -491,7 +491,6 @@ public:
         session_cost_g1_3->setText(QCoreApplication::translate("Dialog", "Session Cost   : ", nullptr));
         session_cost_val_g1_3->setText(QCoreApplication::translate("Dialog", "Rs. 120", nullptr));
         label_13->setText(QCoreApplication::translate("Dialog", "Please Disconnect the Charger", nullptr));
-        btn_manual->setText(QCoreApplication::translate("Dialog", "Goto Manual Mode", nullptr));
         label_9->setText(QCoreApplication::translate("Dialog", "No Network, Try Other Stations", nullptr));
         label_4->setText(QString());
         label_10->setText(QCoreApplication::translate("Dialog", "CCS2", nullptr));

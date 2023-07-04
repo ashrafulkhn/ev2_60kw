@@ -24,13 +24,13 @@ int main(int argc, char *argv[])
     QList<QScreen*> screens = QGuiApplication::screens();
 
     // Assume the secondary screen is at index 1 in the list (you can change this based on your setup)
-    QScreen *screen = screens.value(0);
+//    QScreen *screen = screens.value(0);
 
     //Uncomment these three line during final flashing.
-    w.setWindowFlags(w.windowFlags() | Qt::FramelessWindowHint | Qt::FramelessWindowHint | Qt::WindowFullscreenButtonHint);
+//    w.setWindowFlags(w.windowFlags() | Qt::FramelessWindowHint | Qt::FramelessWindowHint | Qt::WindowFullscreenButtonHint);
 //    QRect screenGeometry = QApplication::desktop()->geometry();
-    QRect screenGeometry = screen->geometry();
-    w.setGeometry(screenGeometry.x(), screenGeometry.y(), w.width(), w.height());
+//    QRect screenGeometry = screen->geometry();
+//    w.setGeometry(screenGeometry.x(), screenGeometry.y(), w.width(), w.height());
     process = new QProcess;
 
 
@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
 //    w.showMaximized();
     w.showFullScreen();
     w.setWindowTitle("::: Welcome :: Ultrafast Chargers :::");
-
     w.show();
     return a.exec();
 }

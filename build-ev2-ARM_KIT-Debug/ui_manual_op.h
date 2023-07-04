@@ -26,9 +26,9 @@ QT_BEGIN_NAMESPACE
 class Ui_manual_op
 {
 public:
-    QPushButton *buttonExitManMode;
     QFrame *frame;
     QLabel *label;
+    QPushButton *buttonExitManMode;
     QLabel *label_2;
     QFrame *frame_2;
     QStackedWidget *stackedWidget;
@@ -76,13 +76,7 @@ public:
     {
         if (manual_op->objectName().isEmpty())
             manual_op->setObjectName(QString::fromUtf8("manual_op"));
-        manual_op->resize(1280, 800);
-        buttonExitManMode = new QPushButton(manual_op);
-        buttonExitManMode->setObjectName(QString::fromUtf8("buttonExitManMode"));
-        buttonExitManMode->setGeometry(QRect(10, 734, 231, 61));
-        QFont font;
-        font.setPointSize(15);
-        buttonExitManMode->setFont(font);
+        manual_op->resize(1280, 720);
         frame = new QFrame(manual_op);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(50, 20, 1181, 71));
@@ -91,11 +85,17 @@ public:
         label = new QLabel(frame);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 9, 1161, 51));
-        QFont font1;
-        font1.setPointSize(30);
-        font1.setBold(true);
-        label->setFont(font1);
+        QFont font;
+        font.setPointSize(30);
+        font.setBold(true);
+        label->setFont(font);
         label->setAlignment(Qt::AlignCenter);
+        buttonExitManMode = new QPushButton(frame);
+        buttonExitManMode->setObjectName(QString::fromUtf8("buttonExitManMode"));
+        buttonExitManMode->setGeometry(QRect(940, 10, 231, 61));
+        QFont font1;
+        font1.setPointSize(15);
+        buttonExitManMode->setFont(font1);
         label_2 = new QLabel(manual_op);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(240, 100, 231, 41));
@@ -315,7 +315,6 @@ public:
         label_3->setAlignment(Qt::AlignCenter);
         frame_3->raise();
         frame_2->raise();
-        buttonExitManMode->raise();
         frame->raise();
         label_2->raise();
 
@@ -331,8 +330,8 @@ public:
     void retranslateUi(QDialog *manual_op)
     {
         manual_op->setWindowTitle(QCoreApplication::translate("manual_op", "Dialog", nullptr));
-        buttonExitManMode->setText(QCoreApplication::translate("manual_op", "Exit Manual Mode", nullptr));
         label->setText(QCoreApplication::translate("manual_op", "Manual Mode", nullptr));
+        buttonExitManMode->setText(QCoreApplication::translate("manual_op", "Exit Manual Mode", nullptr));
         label_2->setText(QCoreApplication::translate("manual_op", "Gun 1", nullptr));
         label_4->setText(QCoreApplication::translate("manual_op", "Current (A)", nullptr));
         lineEdit->setPlaceholderText(QCoreApplication::translate("manual_op", "Enter Current", nullptr));

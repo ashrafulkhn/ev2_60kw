@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Dialog_t {
-    QByteArrayData data[28];
-    char stringdata0[396];
+    QByteArrayData data[26];
+    char stringdata0[380];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,20 +46,18 @@ QT_MOC_LITERAL(10, 130, 14), // "connectCharger"
 QT_MOC_LITERAL(11, 145, 16), // "chargerConnected"
 QT_MOC_LITERAL(12, 162, 17), // "disconnectCharger"
 QT_MOC_LITERAL(13, 180, 19), // "chargerDisconnected"
-QT_MOC_LITERAL(14, 200, 13), // "setClientPort"
-QT_MOC_LITERAL(15, 214, 1), // "p"
-QT_MOC_LITERAL(16, 216, 18), // "topic_subscription"
-QT_MOC_LITERAL(17, 235, 15), // "process_message"
-QT_MOC_LITERAL(18, 251, 7), // "message"
-QT_MOC_LITERAL(19, 259, 14), // "QMqttTopicName"
-QT_MOC_LITERAL(20, 274, 5), // "topic"
-QT_MOC_LITERAL(21, 280, 15), // "rfid_read_react"
-QT_MOC_LITERAL(22, 296, 7), // "payload"
-QT_MOC_LITERAL(23, 304, 14), // "page4_reaction"
-QT_MOC_LITERAL(24, 319, 14), // "page5_reaction"
-QT_MOC_LITERAL(25, 334, 18), // "brokerDisconnected"
-QT_MOC_LITERAL(26, 353, 20), // "updateLogStateChange"
-QT_MOC_LITERAL(27, 374, 21) // "on_btn_manual_clicked"
+QT_MOC_LITERAL(14, 200, 18), // "topic_subscription"
+QT_MOC_LITERAL(15, 219, 15), // "process_message"
+QT_MOC_LITERAL(16, 235, 7), // "message"
+QT_MOC_LITERAL(17, 243, 14), // "QMqttTopicName"
+QT_MOC_LITERAL(18, 258, 5), // "topic"
+QT_MOC_LITERAL(19, 264, 15), // "rfid_read_react"
+QT_MOC_LITERAL(20, 280, 7), // "payload"
+QT_MOC_LITERAL(21, 288, 14), // "page4_reaction"
+QT_MOC_LITERAL(22, 303, 14), // "page5_reaction"
+QT_MOC_LITERAL(23, 318, 18), // "brokerDisconnected"
+QT_MOC_LITERAL(24, 337, 20), // "updateLogStateChange"
+QT_MOC_LITERAL(25, 358, 21) // "on_btn_manual_clicked"
 
     },
     "Dialog\0auth_status\0\0connect_charger_message\0"
@@ -67,12 +65,11 @@ QT_MOC_LITERAL(27, 374, 21) // "on_btn_manual_clicked"
     "page5_action\0qrAuthorised\0qrRejected\0"
     "qrInvalid\0connectCharger\0chargerConnected\0"
     "disconnectCharger\0chargerDisconnected\0"
-    "setClientPort\0p\0topic_subscription\0"
-    "process_message\0message\0QMqttTopicName\0"
-    "topic\0rfid_read_react\0payload\0"
-    "page4_reaction\0page5_reaction\0"
-    "brokerDisconnected\0updateLogStateChange\0"
-    "on_btn_manual_clicked"
+    "topic_subscription\0process_message\0"
+    "message\0QMqttTopicName\0topic\0"
+    "rfid_read_react\0payload\0page4_reaction\0"
+    "page5_reaction\0brokerDisconnected\0"
+    "updateLogStateChange\0on_btn_manual_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -82,7 +79,7 @@ static const uint qt_meta_data_Dialog[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      21,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -90,29 +87,28 @@ static const uint qt_meta_data_Dialog[] = {
       12,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,  119,    2, 0x06 /* Public */,
-       3,    2,  124,    2, 0x06 /* Public */,
-       4,    2,  129,    2, 0x06 /* Public */,
-       5,    2,  134,    2, 0x06 /* Public */,
-       6,    0,  139,    2, 0x06 /* Public */,
-       7,    0,  140,    2, 0x06 /* Public */,
-       8,    0,  141,    2, 0x06 /* Public */,
-       9,    0,  142,    2, 0x06 /* Public */,
-      10,    0,  143,    2, 0x06 /* Public */,
-      11,    0,  144,    2, 0x06 /* Public */,
-      12,    0,  145,    2, 0x06 /* Public */,
-      13,    0,  146,    2, 0x06 /* Public */,
+       1,    2,  114,    2, 0x06 /* Public */,
+       3,    2,  119,    2, 0x06 /* Public */,
+       4,    2,  124,    2, 0x06 /* Public */,
+       5,    2,  129,    2, 0x06 /* Public */,
+       6,    0,  134,    2, 0x06 /* Public */,
+       7,    0,  135,    2, 0x06 /* Public */,
+       8,    0,  136,    2, 0x06 /* Public */,
+       9,    0,  137,    2, 0x06 /* Public */,
+      10,    0,  138,    2, 0x06 /* Public */,
+      11,    0,  139,    2, 0x06 /* Public */,
+      12,    0,  140,    2, 0x06 /* Public */,
+      13,    0,  141,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      14,    1,  147,    2, 0x0a /* Public */,
-      16,    0,  150,    2, 0x0a /* Public */,
-      17,    2,  151,    2, 0x0a /* Public */,
-      21,    2,  156,    2, 0x0a /* Public */,
-      23,    2,  161,    2, 0x0a /* Public */,
-      24,    0,  166,    2, 0x0a /* Public */,
-      25,    0,  167,    2, 0x08 /* Private */,
-      26,    0,  168,    2, 0x08 /* Private */,
-      27,    0,  169,    2, 0x08 /* Private */,
+      14,    0,  142,    2, 0x0a /* Public */,
+      15,    2,  143,    2, 0x0a /* Public */,
+      19,    2,  148,    2, 0x0a /* Public */,
+      21,    2,  153,    2, 0x0a /* Public */,
+      22,    0,  158,    2, 0x0a /* Public */,
+      23,    0,  159,    2, 0x08 /* Private */,
+      24,    0,  160,    2, 0x08 /* Private */,
+      25,    0,  161,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    2,    2,
@@ -129,11 +125,10 @@ static const uint qt_meta_data_Dialog[] = {
     QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Int,   15,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QByteArray, 0x80000000 | 19,   18,   20,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   22,   20,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   22,   20,
+    QMetaType::Void, QMetaType::QByteArray, 0x80000000 | 17,   16,   18,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   20,   18,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   20,   18,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -160,21 +155,20 @@ void Dialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 9: _t->chargerConnected(); break;
         case 10: _t->disconnectCharger(); break;
         case 11: _t->chargerDisconnected(); break;
-        case 12: _t->setClientPort((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 13: _t->topic_subscription(); break;
-        case 14: _t->process_message((*reinterpret_cast< const QByteArray(*)>(_a[1])),(*reinterpret_cast< const QMqttTopicName(*)>(_a[2]))); break;
-        case 15: _t->rfid_read_react((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 16: _t->page4_reaction((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 17: _t->page5_reaction(); break;
-        case 18: _t->brokerDisconnected(); break;
-        case 19: _t->updateLogStateChange(); break;
-        case 20: _t->on_btn_manual_clicked(); break;
+        case 12: _t->topic_subscription(); break;
+        case 13: _t->process_message((*reinterpret_cast< const QByteArray(*)>(_a[1])),(*reinterpret_cast< const QMqttTopicName(*)>(_a[2]))); break;
+        case 14: _t->rfid_read_react((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 15: _t->page4_reaction((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 16: _t->page5_reaction(); break;
+        case 17: _t->brokerDisconnected(); break;
+        case 18: _t->updateLogStateChange(); break;
+        case 19: _t->on_btn_manual_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 14:
+        case 13:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 1:
@@ -300,13 +294,13 @@ int Dialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 21)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 21;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 21)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 21;
+        _id -= 20;
     }
     return _id;
 }
