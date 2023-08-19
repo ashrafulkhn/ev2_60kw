@@ -32,6 +32,7 @@ public:
     QString stop_message_1          =   "STOP1";
     QString stop_message_2          =   "STOP2";
 
+
 public slots:
     void process_message(const QByteArray &message, const QMqttTopicName &topic);
     void topic_subscription();

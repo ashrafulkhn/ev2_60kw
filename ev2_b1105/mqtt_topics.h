@@ -96,11 +96,11 @@
 #define FULL_SOC_2          I_1_132
 #define ENERGY_2            I_1_92
 
-//Messages or Payloads (From topic I_1_51)
+//Messages or Payloads (From topic I_1_111 )
 #define STATE_A "state_a" // After diconnecting charger (Default State)
 #define STATE_B "state_b" //Charger connected
 
-//Messages or Payloads (From topic I_1_111)
+//Messages or Payloads (From topic I_1_51)
 #define DEAUTH  "deauthoriezed"
 #define AUTH    "authorized"
 #define PENDING "pending"

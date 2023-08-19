@@ -10,9 +10,6 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Dialog; }
 QT_END_NAMESPACE
 
-
-
-
 class Dialog : public QDialog
 {
     Q_OBJECT
@@ -100,7 +97,23 @@ public:
     QString i292     = I_2_92;
     QString i2102     = I_2_102;
 
+    //Default Values Gun 1
+    QString     default_v1              = "0 V";
+    int         default_dial_val1       = 0;
+    QString     default_c1              = "0 A";
+    int         default_dial_2_val1     = 0;
+    QString     default_f_soc_1         = "0 Sec";
+    QString     default_ec1             = "0 KWh";
+    int         default_SOC1            = 0;
 
+    //Default Values Gun 2
+    QString     default_v2             = "0 V";
+    int         default_dial_val2      = 0;
+    QString     default_c2             = "0 A";
+    int         default_dial_2_val2    = 0;
+    QString     default_f_soc_2        = "0 Sec";
+    QString     default_ec2            = "0 KWh";
+    int         default_SOC2           = 0;
 
     //Getters
     std::string getHost();

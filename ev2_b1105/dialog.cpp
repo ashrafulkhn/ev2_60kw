@@ -21,8 +21,8 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
     ui->stackedWidget_1->setCurrentIndex(0);
     ui->stackedWidget_2->setCurrentIndex(0);
 
-    //Set car image on the gome page
-    viewCarImage();
+    //Set car image on the home page
+//    viewCarImage();
 
     //:::::::::::::::::::    MQTT Section   :::::::::::::::::::::::::::::::::::
 
@@ -38,6 +38,9 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent) , ui(new Ui::Dialog)
     qDebug() << "Server Port:" << serverPort;
 
     m_client = new QMqttClient(this);
+    m_client->setUsername("UFC");
+    m_client->setPassword("ufc123");
+    m_client->setClientId("UFC_123");
     m_client->setHostname(serverIp);
     m_client->setPort(serverPort);
 //    m_client->setHostname("192.168.3.2");
@@ -125,8 +128,8 @@ void Dialog::brokerDisconnected()
 void Dialog::updateLogStateChange(){
     qDebug() << "updateLogStateChange" << m_client->state();
     if(m_client->state()==2){
-        ui->stackedWidget_1->setCurrentIndex(3);
-        ui->stackedWidget_2->setCurrentIndex(3);
+        ui->stackedWidget_1->setCurrentIndex(1);
+        ui->stackedWidget_2->setCurrentIndex(4);
     }
     if(m_client->state()==0){
         ui->stackedWidget_1->setCurrentIndex(0);
@@ -149,6 +152,7 @@ void Dialog::topic_subscription(){
         m_client->subscribe(current_1);
         m_client->subscribe(full_soc_1);
         m_client->subscribe(energy_1);
+//        QString voltage_1_g1 = "vsecc/connector/1/pe/measured_voltage";
         if (!subscription) {
                 ui->stackedWidget_1->setCurrentIndex(0);
                 ui->stackedWidget_2->setCurrentIndex(0);
@@ -158,8 +162,10 @@ void Dialog::topic_subscription(){
                     qDebug() << "INFO: State: " << m_client->state();
                 }
 
+
         m_client->subscribe(i111);
         m_client->subscribe(voltage_1);
+//        m_client->subscribe(voltage_1_g1);
         m_client->subscribe(current_1);
         m_client->subscribe(i141);
         m_client->subscribe(i151);
@@ -232,43 +238,79 @@ void Dialog::topic_subscription(){
     qDebug() << "INFO: All topics subscribed!!";
 }
 
+bool isConnected;
+
 void Dialog::process_message(const QByteArray &message, const QMqttTopicName &topic){
     QString topicName = topic.name();
     QString payload = QString::fromUtf8(message);
 
     qDebug() << "MESSGAE: Tpoic : " << topicName << " Payload : " << payload;
 
+    if (topic == i1111){
+        if (payload == STATE_A){
+            ui->dial->setValue(default_dial_val1);
+            ui->voltage_g1_2->setText(default_v1);
+            ui->current_g1_2->setText(default_c1);
+            ui->dial_2->setValue(default_dial_2_val1);
+            ui->time_t_f_soc_val_g1_4->setText(default_f_soc_1);
+            ui->energy_g1_val->setText(default_ec1);
+            ui->progressBar->setValue(default_SOC1);
+        }
+    }
+    if (topic == i1112){
+        if (payload == STATE_A){
+            ui->dial_3->setValue(default_dial_val2);
+            ui->voltage_g2->setText(default_v2);
+            ui->current_g2->setText(default_c2);
+            ui->dial_4->setValue(default_dial_2_val2);
+            ui->time_t_f_soc_val_g2_6->setText(default_f_soc_2);
+            ui->energy_g2_val->setText(default_ec2);
+            ui->progressBar_2->setValue(default_SOC2);
+        }
+    }
 
     if (topic == soc_1){
-        ui->soc_val_g1->setText(payload + " %");
+//        ui->soc_val_g1->setText(payload + " %");
+//        ui->label_19->setText(payload.toInt());
+        ui->progressBar->setValue(payload.toInt());
+
     }
     else if (topic == voltage_1){
-        ui->voltage_val_g1->setText(payload + " V");
+//        ui->voltage_val_g1->setText(payload + " V");
+        ui->dial->setValue(payload.toFloat());
+
+        ui->voltage_g1_2->setText((payload.left(payload.length() - 4)) + " V");
     }
     else if (topic == current_1){
-        ui->current_val_g1->setText(payload + " A");
+//        ui->current_val_g1->setText(payload + " A");
+        ui->current_g1_2->setText((payload.left(payload.length() - 4)) + " A");
+        ui->dial_2->setValue(payload.toFloat());
     }
     else if (topic == full_soc_1){
-        ui->time_t_f_soc_val_g1->setText(payload + " Sec");
+        ui->time_t_f_soc_val_g1_4->setText(payload + " Sec");
     }
     else if (topic == energy_1){
-        ui->energy_cons_val_g1->setText(payload + " kWh");
+        ui->energy_g1_val->setText(payload + " kWh");
     }
 
     else if (topic == soc_2){
-        ui->soc_val_g1_3->setText(payload + " %");
+//        ui->soc_val_g1_3->setText(payload + " %");
+//        ui->progressBar_2->setText(payload + " %");
+        ui->progressBar_2->setValue(payload.toInt());
     }
     else if (topic == voltage_2){
-        ui->voltage_val_g1_3->setText(payload + " V");
+        ui->voltage_g2->setText((payload.left(payload.length() - 4)) + " V");
+        ui->dial_3->setValue(payload.toFloat());
     }
     else if (topic == current_2){
-        ui->current_val_g1_3->setText(payload + " A");
+        ui->current_g2->setText((payload.left(payload.length() - 4)) + " A");
+        ui->dial_4->setValue(payload.toFloat());
     }
     else if (topic == full_soc_2){
-        ui->time_t_f_soc_val_g1_3->setText(payload + " Sec");
+        ui->time_t_f_soc_val_g2_6->setText(payload + " Sec");
     }
     else if (topic == energy_2){
-        ui->energy_cons_val_g1_3->setText(payload + " kWh");
+        ui->energy_g2_val->setText(payload + " kWh");
     }
 }
 
@@ -371,15 +413,15 @@ std::string Dialog::getStopMessage() {
 }
 
 //Manupulate the Car Image and display to the label only if the network is connected to Mqtt broker.
-void Dialog::viewCarImage(){
-    QPixmap ev_car(":/data/image/ev_car.png");
-    QPixmap ev_car_tranformed = ev_car.scaledToWidth(400, Qt::SmoothTransformation);
-    QImage ev_car_image = ev_car_tranformed.toImage();
-    QImage mirrored_ev_car_image = ev_car_image.mirrored(true, false);
-    QPixmap mirrored_ev_car = QPixmap::fromImage(mirrored_ev_car_image);
-    ui->label_4->setPixmap(ev_car_tranformed);
-    ui->label_7->setPixmap(mirrored_ev_car);
-}
+//void Dialog::viewCarImage(){
+//    QPixmap ev_car(":/data/image/ev_car.png");
+//    QPixmap ev_car_tranformed = ev_car.scaledToWidth(400, Qt::SmoothTransformation);
+//    QImage ev_car_image = ev_car_tranformed.toImage();
+//    QImage mirrored_ev_car_image = ev_car_image.mirrored(true, false);
+////    QPixmap mirrored_ev_car = QPixmap::fromImage(mirrored_ev_car_image);
+////    ui->label_4->setPixmap(ev_car_tranformed);
+////    ui->label_7->setPixmap(mirrored_ev_car);
+//}
 
 void Dialog::on_pushButton_clicked()
 {

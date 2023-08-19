@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Dialog w;
-    QProcess *process;
+//    QProcess *process;
 /***
  * All Screen related codes are here.
  * Features:
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
  * */
 
     // Get the list of available screens
-    QList<QScreen*> screens = QGuiApplication::screens();
+//    QList<QScreen*> screens = QGuiApplication::screens();
 
     // Assume the secondary screen is at index 1 in the list (you can change this based on your setup)
 //    QScreen *screen = screens.value(0);
@@ -31,8 +31,7 @@ int main(int argc, char *argv[])
 //    QRect screenGeometry = QApplication::desktop()->geometry();
 //    QRect screenGeometry = screen->geometry();
 //    w.setGeometry(screenGeometry.x(), screenGeometry.y(), w.width(), w.height());
-    process = new QProcess;
-
+//    process = new QProcess;
 
 //    wmctrl: install wmctrl on your ubunut system before running this command.
 
@@ -40,11 +39,11 @@ int main(int argc, char *argv[])
 //    process->startDetached("wmctrl -r :ACTIVE: -b add, hidden");
 //    process->startDetached("xprop -root -f _NET_SHOWING_DESKTOP 32c -set _NET_SHOWING_DESKTOP 0");
 //    process->startDetached("xprop -root -remove _MOTIF_WM_HINTS");
-    process->startDetached();
+//    process->startDetached();
 
-//    w.showMaximized();
+    w.showMaximized();
     w.showFullScreen();
-    w.setWindowTitle("::: Welcome :: Ultrafast Chargers :::");
+//    w.setWindowTitle("::: Welcome :: Ultrafast Chargers :::");
     w.show();
     return a.exec();
 }
